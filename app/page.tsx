@@ -23,7 +23,7 @@ export default function Home() {
           href="/stories"
           className="mt-14 block rounded-2xl bg-white py-4 text-center text-black text-lg font-semibold transition hover:scale-[1.02]"
         >
-          Начать
+          Бисмиллях
         </Link>
 
       </div>
