@@ -5,6 +5,7 @@ import Link from "next/link";
 
 import { elephantStory } from "@/data/stories/elephant";
 import { abdullahStory } from "@/data/stories/abdullah";
+import { aminaStory } from "@/data/stories/amina";
 
 type Slide = {
   id: number;
@@ -14,16 +15,19 @@ type Slide = {
 const stories: Record<string, Slide[]> = {
   elephant: elephantStory,
   abdullah: abdullahStory,
+  amina: aminaStory,
 };
 
 const storyTitles: Record<string, string> = {
   elephant: "Год Слона",
   abdullah: "Отец Пророка ﷺ",
+  amina: "Амина — мать Пророка ﷺ",
 };
 
 const nextStories: Record<string, string | null> = {
   elephant: "/story/abdullah",
-  abdullah: null,
+  abdullah: "/story/amina",
+  amina: null,
 };
 
 export default function StoryPage({
@@ -159,7 +163,9 @@ export default function StoryPage({
           className="story-slide h-[100dvh] w-full snap-start snap-always flex flex-col justify-center items-center p-6 relative"
         >
           <div className="flex flex-col items-center max-w-xl text-center animate-fadeIn">
-            <span className="text-4xl mb-4">📖</span>
+            <span className="text-4xl mb-4">
+              📖
+            </span>
 
             <h2 className="text-2xl md:text-3xl font-semibold mb-3">
               Конец истории

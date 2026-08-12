@@ -23,8 +23,8 @@ const sections = [
         number: "03",
         title: "Амина",
         description: "Мать будущего Посланника Аллаха ﷺ",
-        href: "#",
-        available: false,
+        href: "/story/amina",
+        available: true,
       },
       {
         number: "04",
@@ -313,7 +313,6 @@ const sections = [
 export default function StoriesList() {
   return (
     <main className="min-h-screen bg-[#0B0B0B] text-white">
-      {/* Верхняя часть */}
       <div className="w-full max-w-3xl mx-auto px-5 pt-6 pb-10">
         <Link
           href="/"
@@ -337,11 +336,9 @@ export default function StoriesList() {
           </p>
         </div>
 
-        {/* Разделы */}
         <div className="space-y-16">
           {sections.map((section, sectionIndex) => (
             <section key={section.title}>
-              {/* Заголовок раздела */}
               <div className="mb-6">
                 <div className="flex items-center gap-3">
                   <span className="text-xs text-zinc-700 font-mono">
@@ -358,7 +355,6 @@ export default function StoriesList() {
                 </p>
               </div>
 
-              {/* Истории */}
               <div className="space-y-3">
                 {section.stories.map((story) => {
                   if (story.available) {
@@ -427,7 +423,6 @@ export default function StoriesList() {
           ))}
         </div>
 
-        {/* Низ */}
         <div className="mt-20 pt-8 border-t border-zinc-900 text-center">
           <p className="text-xs text-zinc-700 tracking-wide">
             Истории добавляются постепенно
