@@ -6,6 +6,11 @@ import Link from "next/link";
 import { elephantStory } from "@/data/stories/elephant";
 import { abdullahStory } from "@/data/stories/abdullah";
 import { aminaStory } from "@/data/stories/amina";
+import { birthStory } from "@/data/stories/birth";
+import { halimaStory } from "@/data/stories/halima";
+import { halimaBlessingStory } from "@/data/stories/halima-blessing";
+import { halimaScaryDayStory } from "@/data/stories/halima-scary-day";
+
 
 type Slide = {
   id: number;
@@ -16,19 +21,31 @@ const stories: Record<string, Slide[]> = {
   elephant: elephantStory,
   abdullah: abdullahStory,
   amina: aminaStory,
+  birth: birthStory,
+  halima: halimaStory,
+  "halima-blessing": halimaBlessingStory,
+  "halima-scary-day": halimaScaryDayStory,
 };
 
 const storyTitles: Record<string, string> = {
   elephant: "Год Слона",
   abdullah: "Отец Пророка ﷺ",
   amina: "Амина — мать Пророка ﷺ",
+  birth: "Рождение Мухаммада ﷺ",
+  halima: "Халима ас-Са‘дийя",
+    "halima-blessing": "Благословение в доме Халимы",
+    "halima-scary-day": "День, который испугал Халиму",
 };
 
 const nextStories: Record<string, string | null> = {
   elephant: "/story/abdullah",
   abdullah: "/story/amina",
-  amina: null,
-};
+  amina: "/story/birth",
+  birth: "/story/halima",
+  halima: "/story/halima-blessing",
+  "halima-blessing": "/story/halima-scary-day",
+  "halima-scary-day": null,
+}; 
 
 export default function StoryPage({
   params,

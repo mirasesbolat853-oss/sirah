@@ -30,8 +30,8 @@ const sections = [
         number: "04",
         title: "Рождение Мухаммада ﷺ",
         description: "Ночь, с которой началась новая глава истории",
-        href: "#",
-        available: false,
+        href: "/story/birth",
+        available: true,
       },
     ],
   },
@@ -42,34 +42,55 @@ const sections = [
     stories: [
       {
         number: "01",
-        title: "Халима ас-Са'дия",
-        description: "Годы, проведённые среди Бану Са'д",
-        href: "#",
-        available: false,
+        title: "Халима ас-Са‘дийя",
+        description: "Как Мухаммад ﷺ оказался среди Бану Са‘д",
+        href: "/story/halima",
+        available: true,
       },
       {
         number: "02",
-        title: "Возвращение к матери",
-        description: "Детство Мухаммада ﷺ после жизни в пустыне",
-        href: "#",
-        available: false,
+        title: "Благословение в доме Халимы",
+        description: "Перемены, которые Халима заметила после его появления",
+        href: "/story/halima-blessing",
+        available: true,
       },
       {
         number: "03",
-        title: "Смерть матери",
-        description: "Когда Мухаммад ﷺ остался без матери",
+        title: "День, который испугал Халиму",
+        description: "Событие с расщеплением груди в детстве Мухаммада ﷺ",
+        href: "/story/halima-scary-day",
+        available: true,
+      },
+      {
+        number: "04",
+        title: "Возвращение к матери",
+        description: "Мухаммад ﷺ снова возвращается к Амине",
         href: "#",
         available: false,
       },
       {
-        number: "04",
+        number: "05",
+        title: "Последние годы с Аминой",
+        description: "Детство Мухаммада ﷺ рядом с матерью",
+        href: "#",
+        available: false,
+      },
+      {
+        number: "06",
+        title: "Смерть матери",
+        description: "Когда Мухаммад ﷺ потерял Амину",
+        href: "#",
+        available: false,
+      },
+      {
+        number: "07",
         title: "Под опекой Абдуль-Мутталиба",
         description: "Дед, который заботился о своём внуке",
         href: "#",
         available: false,
       },
       {
-        number: "05",
+        number: "08",
         title: "Абу Талиб",
         description: "Новая глава жизни под опекой дяди",
         href: "#",
@@ -203,7 +224,7 @@ const sections = [
     stories: [
       {
         number: "01",
-        title: "Та'иф",
+        title: "Та‘иф",
         description: "Тяжёлое путешествие и великое терпение",
         href: "#",
         available: false,
@@ -211,7 +232,7 @@ const sections = [
       {
         number: "02",
         title: "Ночная поездка",
-        description: "Аль-Исра валь-Ми'радж",
+        description: "Аль-Исра валь-Ми‘радж",
         href: "#",
         available: false,
       },
@@ -314,6 +335,8 @@ export default function StoriesList() {
   return (
     <main className="min-h-screen bg-[#0B0B0B] text-white">
       <div className="w-full max-w-3xl mx-auto px-5 pt-6 pb-10">
+
+        {/* Назад */}
         <Link
           href="/"
           className="inline-flex items-center gap-2 text-sm text-zinc-500 hover:text-white transition-colors"
@@ -321,6 +344,7 @@ export default function StoriesList() {
           ← На главную
         </Link>
 
+        {/* Заголовок */}
         <div className="mt-12 mb-14">
           <p className="text-xs uppercase tracking-[0.25em] text-zinc-600 mb-4">
             SIRAH
@@ -336,11 +360,15 @@ export default function StoriesList() {
           </p>
         </div>
 
+        {/* Разделы */}
         <div className="space-y-16">
           {sections.map((section, sectionIndex) => (
             <section key={section.title}>
+
+              {/* Заголовок раздела */}
               <div className="mb-6">
                 <div className="flex items-center gap-3">
+
                   <span className="text-xs text-zinc-700 font-mono">
                     {String(sectionIndex + 1).padStart(2, "0")}
                   </span>
@@ -348,6 +376,7 @@ export default function StoriesList() {
                   <h2 className="text-2xl md:text-3xl font-medium">
                     {section.title}
                   </h2>
+
                 </div>
 
                 <p className="text-sm text-zinc-600 mt-2 ml-8">
@@ -355,8 +384,11 @@ export default function StoriesList() {
                 </p>
               </div>
 
+              {/* Истории */}
               <div className="space-y-3">
                 {section.stories.map((story) => {
+
+                  /* ДОСТУПНАЯ ИСТОРИЯ */
                   if (story.available) {
                     return (
                       <Link
@@ -365,12 +397,17 @@ export default function StoriesList() {
                         className="group block"
                       >
                         <div className="relative overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-950 px-5 py-5 transition-all duration-300 hover:border-zinc-600 hover:bg-zinc-900">
+
                           <div className="flex items-center gap-5">
+
+                            {/* Номер */}
                             <span className="text-xs font-mono text-zinc-600 group-hover:text-zinc-400 transition-colors">
                               {story.number}
                             </span>
 
+                            {/* Текст */}
                             <div className="flex-1 min-w-0">
+
                               <h3 className="text-lg font-medium text-zinc-100 group-hover:text-white transition-colors">
                                 {story.title}
                               </h3>
@@ -378,29 +415,38 @@ export default function StoriesList() {
                               <p className="text-sm text-zinc-600 mt-1 group-hover:text-zinc-500 transition-colors">
                                 {story.description}
                               </p>
+
                             </div>
 
+                            {/* Стрелка */}
                             <span className="text-zinc-700 group-hover:text-white group-hover:translate-x-1 transition-all text-lg">
                               →
                             </span>
+
                           </div>
                         </div>
                       </Link>
                     );
                   }
 
+                  /* НЕДОСТУПНАЯ ИСТОРИЯ */
                   return (
                     <div
                       key={story.title}
                       className="rounded-2xl border border-zinc-900 bg-zinc-950/40 px-5 py-5 opacity-60"
                     >
                       <div className="flex items-center gap-5">
+
+                        {/* Номер */}
                         <span className="text-xs font-mono text-zinc-700">
                           {story.number}
                         </span>
 
+                        {/* Текст */}
                         <div className="flex-1 min-w-0">
+
                           <div className="flex items-center gap-3 flex-wrap">
+
                             <h3 className="text-lg font-medium text-zinc-400">
                               {story.title}
                             </h3>
@@ -408,11 +454,13 @@ export default function StoriesList() {
                             <span className="text-[10px] uppercase tracking-wider text-zinc-700 border border-zinc-800 rounded-full px-2 py-0.5">
                               Скоро
                             </span>
+
                           </div>
 
                           <p className="text-sm text-zinc-700 mt-1">
                             {story.description}
                           </p>
+
                         </div>
                       </div>
                     </div>
@@ -423,7 +471,9 @@ export default function StoriesList() {
           ))}
         </div>
 
+        {/* Нижний текст */}
         <div className="mt-20 pt-8 border-t border-zinc-900 text-center">
+
           <p className="text-xs text-zinc-700 tracking-wide">
             Истории добавляются постепенно
           </p>
@@ -431,7 +481,9 @@ export default function StoriesList() {
           <p className="text-xs text-zinc-800 mt-2">
             Пусть изучение сиры будет полезным знанием.
           </p>
+
         </div>
+
       </div>
     </main>
   );
