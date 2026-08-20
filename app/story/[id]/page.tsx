@@ -10,6 +10,11 @@ import { birthStory } from "@/data/stories/birth";
 import { halimaStory } from "@/data/stories/halima";
 import { halimaBlessingStory } from "@/data/stories/halima-blessing";
 import { halimaScaryDayStory } from "@/data/stories/halima-scary-day";
+import { returnToMotherStory } from "@/data/stories/returnmother";
+import { lastYearsWithAminaStory } from "@/data/stories/last-years-with-amina";
+import { underGrandfatherStory } from "@/data/stories/undergrandfather";
+import { underAbuTalibStory } from "@/data/stories/under-abu-talib";
+import { aminaDeathStory } from "@/data/stories/aminadeath";
 
 
 type Slide = {
@@ -17,7 +22,7 @@ type Slide = {
   text: string;
 };
 
-const stories: Record<string, Slide[]> = {
+ const stories: Record<string, Slide[]> = {
   elephant: elephantStory,
   abdullah: abdullahStory,
   amina: aminaStory,
@@ -25,6 +30,11 @@ const stories: Record<string, Slide[]> = {
   halima: halimaStory,
   "halima-blessing": halimaBlessingStory,
   "halima-scary-day": halimaScaryDayStory,
+  returnmother: returnToMotherStory,
+  "last-years-with-amina": lastYearsWithAminaStory,
+  aminadeath: aminaDeathStory,
+  "undergrandfather": underGrandfatherStory,
+  "under-abu-talib": underAbuTalibStory,
 };
 
 const storyTitles: Record<string, string> = {
@@ -33,10 +43,14 @@ const storyTitles: Record<string, string> = {
   amina: "Амина — мать Пророка ﷺ",
   birth: "Рождение Мухаммада ﷺ",
   halima: "Халима ас-Са‘дийя",
-    "halima-blessing": "Благословение в доме Халимы",
-    "halima-scary-day": "День, который испугал Халиму",
+  "halima-blessing": "Благословение в доме Халимы",
+  "halima-scary-day": "День, который испугал Халиму",
+  returnmother: "Возвращение к матери",
+  "last-years-with-amina": "Последние годы с Аминой",
+  aminadeath: "Смерть Амины",
+  "under-grandfather": "Под опекой деда",
+  "under-abu-talib": "Под опекой Абу Талиба",
 };
-
 const nextStories: Record<string, string | null> = {
   elephant: "/story/abdullah",
   abdullah: "/story/amina",
@@ -44,8 +58,16 @@ const nextStories: Record<string, string | null> = {
   birth: "/story/halima",
   halima: "/story/halima-blessing",
   "halima-blessing": "/story/halima-scary-day",
-  "halima-scary-day": null,
-}; 
+  "halima-scary-day": "/story/returnmother",
+
+  returnmother: "/story/last-years-with-amina",
+  "last-years-with-amina": "/story/aminadeath",
+
+  aminadeath: "/story/under-grandfather",
+  "under-grandfather": "/story/under-abu-talib",
+
+  "under-abu-talib": null,
+};
 
 export default function StoryPage({
   params,
