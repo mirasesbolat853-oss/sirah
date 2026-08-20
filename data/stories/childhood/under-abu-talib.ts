@@ -1,5 +1,4 @@
 export const underAbuTalibStory = [
-
   {
     id: 1,
     text: "Мухаммаду ﷺ было\nоколо восьми лет.",

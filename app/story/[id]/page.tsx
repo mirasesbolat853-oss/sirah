@@ -3,30 +3,34 @@
 import { use, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 
-import { elephantStory } from "@/data/stories/elephant";
-import { abdullahStory } from "@/data/stories/abdullah";
-import { aminaStory } from "@/data/stories/amina";
-import { birthStory } from "@/data/stories/birth";
-import { halimaStory } from "@/data/stories/halima";
-import { halimaBlessingStory } from "@/data/stories/halima-blessing";
-import { halimaScaryDayStory } from "@/data/stories/halima-scary-day";
-import { returnToMotherStory } from "@/data/stories/returnmother";
-import { lastYearsWithAminaStory } from "@/data/stories/last-years-with-amina";
-import { underGrandfatherStory } from "@/data/stories/undergrandfather";
-import { underAbuTalibStory } from "@/data/stories/under-abu-talib";
-import { aminaDeathStory } from "@/data/stories/aminadeath";
+import { elephantStory } from "@/data/stories/beforebirth/elephant";
+import { abdullahStory } from "@/data/stories/beforebirth/abdullah";
+import { aminaStory } from "@/data/stories/beforebirth/amina";
+import { birthStory } from "@/data/stories/beforebirth/birth";
 
+import { halimaStory } from "@/data/stories/childhood/halima";
+import { halimaBlessingStory } from "@/data/stories/childhood/halima-blessing";
+import { halimaScaryDayStory } from "@/data/stories/childhood/halima-scary-day";
+import { returnToMotherStory } from "@/data/stories/childhood/returnmother";
+import { lastYearsWithAminaStory } from "@/data/stories/childhood/last-years-with-amina";
+import { underGrandfatherStory } from "@/data/stories/childhood/undergrandfather";
+import { underAbuTalibStory } from "@/data/stories/childhood/under-abu-talib";
+import { aminaDeathStory } from "@/data/stories/childhood/aminadeath";
+
+import { alAminStory } from "@/data/stories/beforemessage/alamin";
+import { tradeJourneysStory } from "@/data/stories/beforemessage/tradejourneys";
 
 type Slide = {
   id: number;
   text: string;
 };
 
- const stories: Record<string, Slide[]> = {
+const stories: Record<string, Slide[]> = {
   elephant: elephantStory,
   abdullah: abdullahStory,
   amina: aminaStory,
   birth: birthStory,
+
   halima: halimaStory,
   "halima-blessing": halimaBlessingStory,
   "halima-scary-day": halimaScaryDayStory,
@@ -35,6 +39,9 @@ type Slide = {
   aminadeath: aminaDeathStory,
   "undergrandfather": underGrandfatherStory,
   "under-abu-talib": underAbuTalibStory,
+
+  "tradejourneys": tradeJourneysStory,
+  "alamin": alAminStory,
 };
 
 const storyTitles: Record<string, string> = {
@@ -42,31 +49,38 @@ const storyTitles: Record<string, string> = {
   abdullah: "Отец Пророка ﷺ",
   amina: "Амина — мать Пророка ﷺ",
   birth: "Рождение Мухаммада ﷺ",
+
   halima: "Халима ас-Са‘дийя",
   "halima-blessing": "Благословение в доме Халимы",
   "halima-scary-day": "День, который испугал Халиму",
   returnmother: "Возвращение к матери",
   "last-years-with-amina": "Последние годы с Аминой",
   aminadeath: "Смерть Амины",
-  "under-grandfather": "Под опекой деда",
+  undergrandfather: "Под опекой деда",
   "under-abu-talib": "Под опекой Абу Талиба",
+
+  tradejourneys: "Торговые путешествия",
+  alamin: "Аль-Амин",
 };
+
 const nextStories: Record<string, string | null> = {
   elephant: "/story/abdullah",
   abdullah: "/story/amina",
   amina: "/story/birth",
   birth: "/story/halima",
+
   halima: "/story/halima-blessing",
   "halima-blessing": "/story/halima-scary-day",
   "halima-scary-day": "/story/returnmother",
-
   returnmother: "/story/last-years-with-amina",
   "last-years-with-amina": "/story/aminadeath",
 
-  aminadeath: "/story/under-grandfather",
-  "under-grandfather": "/story/under-abu-talib",
+  aminadeath: "/story/undergrandfather",
+  undergrandfather: "/story/under-abu-talib",
 
-  "under-abu-talib": null,
+  "under-abu-talib": "/story/tradejourneys",
+  tradejourneys: "/story/alamin",
+  alamin: null,
 };
 
 export default function StoryPage({
