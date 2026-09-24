@@ -336,13 +336,22 @@ export default function StoriesList() {
     <main className="min-h-screen bg-[#0B0B0B] text-white">
       <div className="w-full max-w-3xl mx-auto px-5 pt-6 pb-10">
 
-        {/* Назад */}
-        <Link
-          href="/"
-          className="inline-flex items-center gap-2 text-sm text-zinc-500 hover:text-white transition-colors"
-        >
-          ← На главную
-        </Link>
+        {/* Верхняя навигация */}
+        <div className="flex items-center justify-between">
+          <Link
+            href="/"
+            className="inline-flex items-center gap-2 text-sm text-zinc-500 hover:text-white transition-colors"
+          >
+            ← На главную
+          </Link>
+
+          <Link
+            href="/about"
+            className="inline-flex items-center gap-2 text-sm text-zinc-500 hover:text-white transition-colors"
+          >
+            О приложении →
+          </Link>
+        </div>
 
         {/* Заголовок */}
         <div className="mt-12 mb-14">
