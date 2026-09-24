@@ -367,6 +367,14 @@ export default function StoriesList() {
             Путь Посланника Аллаха Мухаммада ﷺ — от событий до его рождения
             до последних дней его жизни.
           </p>
+
+          {/* Установка на телефон */}
+          <Link
+            href="/install"
+            className="inline-flex items-center gap-2 mt-6 text-sm text-zinc-400 hover:text-white transition-colors"
+          >
+            📱 Добавить Sirah на телефон →
+          </Link>
         </div>
 
         {/* Разделы */}
