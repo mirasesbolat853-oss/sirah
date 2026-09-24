@@ -37,11 +37,11 @@ const stories: Record<string, Slide[]> = {
   returnmother: returnToMotherStory,
   "last-years-with-amina": lastYearsWithAminaStory,
   aminadeath: aminaDeathStory,
-  "undergrandfather": underGrandfatherStory,
+  undergrandfather: underGrandfatherStory,
   "under-abu-talib": underAbuTalibStory,
 
-  "tradejourneys": tradeJourneysStory,
-  "alamin": alAminStory,
+  tradejourneys: tradeJourneysStory,
+  alamin: alAminStory,
 };
 
 const storyTitles: Record<string, string> = {
@@ -189,6 +189,19 @@ export default function StoryPage({
         ref={scrollContainerRef}
         className="stories-container h-[100dvh] w-full overflow-y-scroll snap-y snap-mandatory touch-pan-y [&::-webkit-scrollbar]:hidden"
       >
+        {/* Подсказка свайпа */}
+        {activeIndex === 0 && slides.length > 1 && (
+          <div className="swipe-hint pointer-events-none fixed bottom-7 left-1/2 z-40 -translate-x-1/2 flex flex-col items-center">
+            <span className="text-xs text-zinc-400 mb-1">
+              Свайп вниз
+            </span>
+
+            <span className="text-3xl text-white">
+              ↓
+            </span>
+          </div>
+        )}
+
         {slides.map((slide, idx) => {
           const isActive = activeIndex === idx;
 
@@ -274,6 +287,24 @@ export default function StoryPage({
         .story-text-exit {
           opacity: 0;
           transform: translateY(-16px) scale(0.98);
+        }
+
+        /* Анимация подсказки свайпа */
+        @keyframes swipeHint {
+          0%,
+          100% {
+            transform: translateY(0);
+            opacity: 0.5;
+          }
+
+          50% {
+            transform: translateY(8px);
+            opacity: 1;
+          }
+        }
+
+        .swipe-hint {
+          animation: swipeHint 1.2s ease-in-out infinite;
         }
 
         @keyframes fadeIn {
