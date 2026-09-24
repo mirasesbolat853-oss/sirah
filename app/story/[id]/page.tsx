@@ -3,10 +3,12 @@
 import { use, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 
-import { elephantStory } from "@/data/stories/beforebirth/elephant";
-import { abdullahStory } from "@/data/stories/beforebirth/abdullah";
-import { aminaStory } from "@/data/stories/beforebirth/amina";
-import { birthStory } from "@/data/stories/beforebirth/birth";
+import { elephantStory as elephantRu } from "@/data/stories/ru/beforebirth/elephant";
+import { elephantStory as elephantKz } from "@/data/stories/kz/beforebirth/elephant";
+
+import { abdullahStory } from "@/data/stories/ru/beforebirth/abdullah";
+import { aminaStory } from "@/data/stories/ru/beforebirth/amina";
+import { birthStory } from "@/data/stories/ru/beforebirth/birth";
 
 import { halimaStory } from "@/data/stories/childhood/halima";
 import { halimaBlessingStory } from "@/data/stories/childhood/halima-blessing";
@@ -25,63 +27,7 @@ type Slide = {
   text: string;
 };
 
-const stories: Record<string, Slide[]> = {
-  elephant: elephantStory,
-  abdullah: abdullahStory,
-  amina: aminaStory,
-  birth: birthStory,
-
-  halima: halimaStory,
-  "halima-blessing": halimaBlessingStory,
-  "halima-scary-day": halimaScaryDayStory,
-  returnmother: returnToMotherStory,
-  "last-years-with-amina": lastYearsWithAminaStory,
-  aminadeath: aminaDeathStory,
-  undergrandfather: underGrandfatherStory,
-  "under-abu-talib": underAbuTalibStory,
-
-  tradejourneys: tradeJourneysStory,
-  alamin: alAminStory,
-};
-
-const storyTitles: Record<string, string> = {
-  elephant: "Год Слона",
-  abdullah: "Отец Пророка ﷺ",
-  amina: "Амина — мать Пророка ﷺ",
-  birth: "Рождение Мухаммада ﷺ",
-
-  halima: "Халима ас-Са‘дийя",
-  "halima-blessing": "Благословение в доме Халимы",
-  "halima-scary-day": "День, который испугал Халиму",
-  returnmother: "Возвращение к матери",
-  "last-years-with-amina": "Последние годы с Аминой",
-  aminadeath: "Смерть Амины",
-  undergrandfather: "Под опекой деда",
-  "under-abu-talib": "Под опекой Абу Талиба",
-
-  tradejourneys: "Торговые путешествия",
-  alamin: "Аль-Амин",
-};
-
-const nextStories: Record<string, string | null> = {
-  elephant: "/story/abdullah",
-  abdullah: "/story/amina",
-  amina: "/story/birth",
-  birth: "/story/halima",
-
-  halima: "/story/halima-blessing",
-  "halima-blessing": "/story/halima-scary-day",
-  "halima-scary-day": "/story/returnmother",
-  returnmother: "/story/last-years-with-amina",
-  "last-years-with-amina": "/story/aminadeath",
-
-  aminadeath: "/story/undergrandfather",
-  undergrandfather: "/story/under-abu-talib",
-
-  "under-abu-talib": "/story/tradejourneys",
-  tradejourneys: "/story/alamin",
-  alamin: null,
-};
+type Language = "ru" | "kz";
 
 export default function StoryPage({
   params,
@@ -90,12 +36,93 @@ export default function StoryPage({
 }) {
   const { id } = use(params);
 
-  const slides = stories[id] ?? [];
-  const title = storyTitles[id] ?? "История";
-  const nextStoryUrl = nextStories[id] ?? null;
-
+  const [language, setLanguage] = useState<Language>("ru");
   const [activeIndex, setActiveIndex] = useState(0);
+
   const scrollContainerRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const savedLanguage = localStorage.getItem("language");
+
+    if (savedLanguage === "kz") {
+      setLanguage("kz");
+    } else {
+      setLanguage("ru");
+    }
+  }, []);
+
+  const stories: Record<string, Slide[]> = {
+    elephant: language === "kz" ? elephantKz : elephantRu,
+
+    abdullah: abdullahStory,
+    amina: aminaStory,
+    birth: birthStory,
+
+    halima: halimaStory,
+    "halima-blessing": halimaBlessingStory,
+    "halima-scary-day": halimaScaryDayStory,
+    returnmother: returnToMotherStory,
+    "last-years-with-amina": lastYearsWithAminaStory,
+    aminadeath: aminaDeathStory,
+    undergrandfather: underGrandfatherStory,
+    "under-abu-talib": underAbuTalibStory,
+
+    tradejourneys: tradeJourneysStory,
+    alamin: alAminStory,
+  };
+
+  const storyTitles: Record<string, string> = {
+    elephant:
+      language === "kz"
+        ? "Піл жылы"
+        : "Год Слона",
+
+    abdullah: "Отец Пророка ﷺ",
+    amina: "Амина — мать Пророка ﷺ",
+    birth: "Рождение Мухаммада ﷺ",
+
+    halima: "Халима ас-Са‘дийя",
+    "halima-blessing": "Благословение в доме Халимы",
+    "halima-scary-day": "День, который испугал Халиму",
+    returnmother: "Возвращение к матери",
+    "last-years-with-amina": "Последние годы с Аминой",
+    aminadeath: "Смерть Амины",
+    undergrandfather: "Под опекой деда",
+    "under-abu-talib": "Под опекой Абу Талиба",
+
+    tradejourneys: "Торговые путешествия",
+    alamin: "Аль-Амин",
+  };
+
+  const nextStories: Record<string, string | null> = {
+    elephant: "/story/abdullah",
+    abdullah: "/story/amina",
+    amina: "/story/birth",
+    birth: "/story/halima",
+
+    halima: "/story/halima-blessing",
+    "halima-blessing": "/story/halima-scary-day",
+    "halima-scary-day": "/story/returnmother",
+    returnmother: "/story/last-years-with-amina",
+    "last-years-with-amina": "/story/aminadeath",
+
+    aminadeath: "/story/undergrandfather",
+    undergrandfather: "/story/under-abu-talib",
+
+    "under-abu-talib": "/story/tradejourneys",
+    tradejourneys: "/story/alamin",
+    alamin: null,
+  };
+
+  const slides = stories[id] ?? [];
+
+  const title =
+    storyTitles[id] ??
+    (language === "kz"
+      ? "Хикая"
+      : "История");
+
+  const nextStoryUrl = nextStories[id] ?? null;
 
   useEffect(() => {
     const container = scrollContainerRef.current;
@@ -145,24 +172,30 @@ export default function StoryPage({
         window.cancelAnimationFrame(rafId);
       }
     };
-  }, [id]);
+  }, [id, language]);
 
   if (!stories[id]) {
     return (
       <main className="min-h-[100dvh] w-full bg-black text-white flex flex-col items-center justify-center p-6 text-center">
         <h1 className="text-2xl font-semibold mb-4">
-          История не найдена
+          {language === "kz"
+            ? "Хикая табылмады"
+            : "История не найдена"}
         </h1>
 
         <p className="text-zinc-500 mb-8">
-          Возможно, эта история ещё не добавлена.
+          {language === "kz"
+            ? "Мүмкін, бұл хикая әлі қосылмаған."
+            : "Возможно, эта история ещё не добавлена."}
         </p>
 
         <Link
           href="/stories"
           className="px-6 py-3 rounded-full bg-white text-black font-medium"
         >
-          ← К списку историй
+          {language === "kz"
+            ? "← Хикаялар тізіміне"
+            : "← К списку историй"}
         </Link>
       </main>
     );
@@ -176,7 +209,9 @@ export default function StoryPage({
             href="/stories"
             className="inline-block text-sm font-medium text-white hover:opacity-70 transition-opacity"
           >
-            &larr; К списку историй
+            {language === "kz"
+              ? "← Хикаялар тізімі"
+              : "← К списку историй"}
           </Link>
 
           <span className="text-xs text-zinc-500">
@@ -189,11 +224,12 @@ export default function StoryPage({
         ref={scrollContainerRef}
         className="stories-container h-[100dvh] w-full overflow-y-scroll snap-y snap-mandatory touch-pan-y [&::-webkit-scrollbar]:hidden"
       >
-        {/* Подсказка свайпа */}
         {activeIndex === 0 && slides.length > 1 && (
           <div className="swipe-hint pointer-events-none fixed bottom-7 left-1/2 z-40 -translate-x-1/2 flex flex-col items-center">
             <span className="text-xs text-zinc-400 mb-1">
-              Свайп вниз
+              {language === "kz"
+                ? "Төмен сырғытыңыз"
+                : "Свайп вниз"}
             </span>
 
             <span className="text-3xl text-white">
@@ -234,11 +270,15 @@ export default function StoryPage({
             </span>
 
             <h2 className="text-2xl md:text-3xl font-semibold mb-3">
-              Конец истории
+              {language === "kz"
+                ? "Хикаяның соңы"
+                : "Конец истории"}
             </h2>
 
             <p className="text-zinc-400 text-sm md:text-base mb-8">
-              Вы дочитали «{title}» до конца.
+              {language === "kz"
+                ? `«${title}» хикаясын соңына дейін оқыдыңыз.`
+                : `Вы дочитали «${title}» до конца.`}
             </p>
 
             <div className="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto">
@@ -247,7 +287,9 @@ export default function StoryPage({
                   href={nextStoryUrl}
                   className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3.5 text-base font-medium bg-white text-black rounded-full hover:bg-zinc-200 transition-all shadow-lg"
                 >
-                  Следующая история &rarr;
+                  {language === "kz"
+                    ? "Келесі хикая →"
+                    : "Следующая история →"}
                 </Link>
               )}
 
@@ -255,7 +297,9 @@ export default function StoryPage({
                 href="/stories"
                 className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3.5 text-base font-medium bg-zinc-900 text-white border border-zinc-700 rounded-full hover:bg-zinc-800 transition-all"
               >
-                К списку историй
+                {language === "kz"
+                  ? "Хикаялар тізімі"
+                  : "К списку историй"}
               </Link>
             </div>
           </div>
@@ -289,7 +333,6 @@ export default function StoryPage({
           transform: translateY(-16px) scale(0.98);
         }
 
-        /* Анимация подсказки свайпа */
         @keyframes swipeHint {
           0%,
           100% {
