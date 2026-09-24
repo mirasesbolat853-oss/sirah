@@ -170,7 +170,7 @@ export default function InstallPage() {
 
                 <p className="text-sm text-zinc-400 mt-2 leading-relaxed">
                   Если появится пункт «Открывать как веб-приложение»,
-                  включи его. Затем нажми «Добавить». На фоте конечный итог
+                  включи его. Затем нажми «Добавить». На фоте конечный итог.
                 </p>
               </div>
 
@@ -213,12 +213,6 @@ export default function InstallPage() {
               />
             </div>
 
-            <div className="mt-5 rounded-2xl border border-zinc-800 p-5">
-              <p className="text-sm text-zinc-400 leading-relaxed">
-                Нажимаешь на иконку Sirah — и Sirah открывается
-                как отдельное приложение, без обычного интерфейса Safari.
-              </p>
-            </div>
           </section>
 
           <div className="mt-8 rounded-2xl border border-zinc-800 p-5">
