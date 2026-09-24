@@ -170,7 +170,7 @@ export default function InstallPage() {
 
                 <p className="text-sm text-zinc-400 mt-2 leading-relaxed">
                   Если появится пункт «Открывать как веб-приложение»,
-                  включи его. Затем нажми «Добавить».
+                  включи его. Затем нажми «Добавить». На фоте конечный итог
                 </p>
               </div>
 
@@ -205,7 +205,7 @@ export default function InstallPage() {
 
             <div className="overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-950">
               <Image
-                src="/install/iphone-home.jpeg"
+                src="/install/iphone-3.jpeg"
                 alt="Sirah на главном экране iPhone"
                 width={800}
                 height={1200}
