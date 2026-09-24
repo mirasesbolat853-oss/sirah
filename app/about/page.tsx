@@ -66,8 +66,8 @@ export default function AboutPage() {
             Материалы текущих историй были представлены{" "}
             <span className="text-white font-medium">
               Омирбекову Ернару, наиб-имаму области Жетісу
-            </span>
-            {" "}и получили его одобрение.
+            </span>{" "}
+            и получили его одобрение.
           </p>
         </section>
 
@@ -144,6 +144,27 @@ export default function AboutPage() {
               </li>
             </ol>
           </div>
+        </section>
+
+        {/* Связаться с автором */}
+        <section className="mb-12 rounded-2xl border border-zinc-800 bg-zinc-950 p-6">
+          <h2 className="text-xl font-semibold mb-3">
+            Связаться с автором
+          </h2>
+
+          <p className="text-zinc-400 leading-relaxed mb-5">
+            Если вы заметили ошибку, знаете более точный источник или
+            хотите предложить что-то для Sirah — напишите мне.
+          </p>
+
+          <a
+            href="https://t.me/XaJlBaGoy"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-medium text-black hover:bg-zinc-200 transition-colors"
+          >
+            Написать в Telegram →
+          </a>
         </section>
 
         <Link
