@@ -83,69 +83,6 @@ export default function AboutPage() {
           </p>
         </section>
 
-        <section className="mb-12">
-          <h2 className="text-xl font-semibold mb-6">
-            Как добавить Sirah на главный экран
-          </h2>
-
-          <div className="mb-5 rounded-2xl border border-zinc-800 bg-zinc-950 p-6">
-            <h3 className="text-lg font-medium mb-4">
-              🍎 iPhone
-            </h3>
-
-            <ol className="space-y-3 text-sm text-zinc-400">
-              <li>
-                <span className="text-white">1.</span>{" "}
-                Открой Sirah в Safari.
-              </li>
-
-              <li>
-                <span className="text-white">2.</span>{" "}
-                Нажми кнопку «Поделиться».
-              </li>
-
-              <li>
-                <span className="text-white">3.</span>{" "}
-                Выбери «На экран "Домой"».
-              </li>
-
-              <li>
-                <span className="text-white">4.</span>{" "}
-                Нажми «Добавить».
-              </li>
-            </ol>
-          </div>
-
-          <div className="rounded-2xl border border-zinc-800 bg-zinc-950 p-6">
-            <h3 className="text-lg font-medium mb-4">
-              🤖 Android
-            </h3>
-
-            <ol className="space-y-3 text-sm text-zinc-400">
-              <li>
-                <span className="text-white">1.</span>{" "}
-                Открой Sirah в Chrome.
-              </li>
-
-              <li>
-                <span className="text-white">2.</span>{" "}
-                Нажми меню <span className="text-white">⋮</span>.
-              </li>
-
-              <li>
-                <span className="text-white">3.</span>{" "}
-                Выбери «Добавить на главный экран» или
-                «Установить приложение».
-              </li>
-
-              <li>
-                <span className="text-white">4.</span>{" "}
-                Подтверди установку.
-              </li>
-            </ol>
-          </div>
-        </section>
-
         {/* Связаться с автором */}
         <section className="mb-12 rounded-2xl border border-zinc-800 bg-zinc-950 p-6">
           <h2 className="text-xl font-semibold mb-3">
