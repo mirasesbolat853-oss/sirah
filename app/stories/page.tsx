@@ -445,7 +445,7 @@ available: true,
     {
       number: "08",
       title: "Әбу Талиб",
-      description: "Нағашысының емес, көкесі Әбу Талибтің қамқорлығындағы жаңа кезең",
+      description: "Көкесі Әбу Талибтің қамқорлығындағы жаңа кезең",
       href: "/story/under-abu-talib",
       available: true,
     },

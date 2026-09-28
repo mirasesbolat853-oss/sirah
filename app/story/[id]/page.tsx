@@ -6,8 +6,12 @@ import Link from "next/link";
 import { elephantStory as elephantRu } from "@/data/stories/ru/beforebirth/elephant";
 import { elephantStory as elephantKz } from "@/data/stories/kz/beforebirth/elephant";
 
-import { abdullahStory } from "@/data/stories/ru/beforebirth/abdullah";
-import { aminaStory } from "@/data/stories/ru/beforebirth/amina";
+import { abdullahStory as abdullahRu } from "@/data/stories/ru/beforebirth/abdullah";
+import { abdullahStory as abdullahKz } from "@/data/stories/kz/beforebirth/abdullah";
+
+import { aminaStory as aminaRu } from "@/data/stories/ru/beforebirth/amina";
+import { aminaStory as aminaKZ } from "@/data/stories/kz/beforebirth/amina";
+
 import { birthStory } from "@/data/stories/ru/beforebirth/birth";
 
 import { halimaStory } from "@/data/stories/childhood/halima";
@@ -54,8 +58,8 @@ export default function StoryPage({
   const stories: Record<string, Slide[]> = {
     elephant: language === "kz" ? elephantKz : elephantRu,
 
-    abdullah: abdullahStory,
-    amina: aminaStory,
+    abdullah: language === "kz" ? abdullahKz : abdullahRu,
+    amina: language === "kz" ? aminaKZ : aminaRu,
     birth: birthStory,
 
     halima: halimaStory,
