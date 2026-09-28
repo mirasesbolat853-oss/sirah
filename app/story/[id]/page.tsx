@@ -12,7 +12,9 @@ import { abdullahStory as abdullahKz } from "@/data/stories/kz/beforebirth/abdul
 import { aminaStory as aminaRu } from "@/data/stories/ru/beforebirth/amina";
 import { aminaStory as aminaKZ } from "@/data/stories/kz/beforebirth/amina";
 
-import { birthStory } from "@/data/stories/ru/beforebirth/birth";
+import { birthStory as birthRu } from "@/data/stories/ru/beforebirth/birth";
+import { birthStory as birthKz } from "@/data/stories/kz/beforebirth/birth";
+
 
 import { halimaStory } from "@/data/stories/childhood/halima";
 import { halimaBlessingStory } from "@/data/stories/childhood/halima-blessing";
@@ -62,7 +64,7 @@ export default function StoryPage({
 
     abdullah: language === "kz" ? abdullahKz : abdullahRu,
     amina: language === "kz" ? aminaKZ : aminaRu,
-    birth: birthStory,
+    birth: language === "kz" ? birthKz : birthRu,
 
     halima: halimaStory,
     "halima-blessing": halimaBlessingStory,
