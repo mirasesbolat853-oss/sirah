@@ -41,6 +41,7 @@ export default function StoryPage({
   const { id } = use(params);
 
   const [language, setLanguage] = useState<Language>("ru");
+  const [languageReady, setLanguageReady] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
 
   const scrollContainerRef = useRef<HTMLDivElement | null>(null);
@@ -53,6 +54,7 @@ export default function StoryPage({
     } else {
       setLanguage("ru");
     }
+    setLanguageReady(true);
   }, []);
 
   const stories: Record<string, Slide[]> = {
@@ -177,6 +179,11 @@ export default function StoryPage({
       }
     };
   }, [id, language]);
+
+  // Пока язык из localStorage не получен, рендерим пустой фон без текста
+  if (!languageReady) {
+    return <main className="min-h-[100dvh] w-full bg-black" />;
+  }
 
   if (!stories[id]) {
     return (
