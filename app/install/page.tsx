@@ -74,11 +74,11 @@ export default function InstallPage() {
       <div className="mx-auto w-full max-w-2xl px-6 py-8">
 
         {/* Верхняя навигация */}
-        <div className="flex items-center justify-between mb-10">
+        <div className="mb-10 flex items-center justify-between">
 
           <Link
             href="/stories"
-            className="text-sm text-zinc-500 hover:text-foreground transition-colors"
+            className="text-sm text-zinc-500 transition-colors hover:text-foreground"
           >
             {isKz ? "← Хикаяларға" : "← К историям"}
           </Link>
@@ -104,11 +104,11 @@ export default function InstallPage() {
         {/* Заголовок */}
         <section className="mb-12">
 
-          <p className="text-xs uppercase tracking-[0.25em] text-zinc-500 mb-4">
+          <p className="mb-4 text-xs uppercase tracking-[0.25em] text-zinc-500">
             SIRAH
           </p>
 
-          <h1 className="text-4xl md:text-5xl font-semibold tracking-tight mb-5">
+          <h1 className="mb-5 text-4xl font-semibold tracking-tight md:text-5xl">
             {isKz ? (
               <>
                 Sirah-ны
@@ -124,7 +124,7 @@ export default function InstallPage() {
             )}
           </h1>
 
-          <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed">
+          <p className="leading-relaxed text-zinc-600 dark:text-zinc-400">
             {isKz
               ? "Sirah-ны телефонның негізгі экранына қосып, оны браузерден сайт іздемей-ақ кәдімгі қолданба сияқты ашуға болады."
               : "Sirah можно добавить на главный экран телефона и открывать как обычное приложение — без поиска сайта в браузере."}
@@ -133,11 +133,11 @@ export default function InstallPage() {
         </section>
 
         {/* Важно */}
-        <section className="mb-12 rounded-2xl border border-zinc-300 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-950 p-6 transition-colors duration-300">
+        <section className="mb-12 rounded-2xl border border-zinc-300 bg-zinc-100 p-6 transition-colors duration-300 dark:border-zinc-900 dark:bg-zinc-950">
 
-          <div className="flex items-center gap-3 mb-4">
+          <div className="mb-4 flex items-center gap-3">
 
-            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-foreground text-background text-lg">
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-foreground text-lg text-background">
               +
             </div>
 
@@ -147,7 +147,7 @@ export default function InstallPage() {
 
           </div>
 
-          <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed">
+          <p className="leading-relaxed text-zinc-600 dark:text-zinc-400">
             {isKz
               ? "App Store немесе Google Play-ден ештеңе жүктеудің қажеті жоқ. Sirah-ты сайттың өзінен тікелей телефонның негізгі экранына қосуға болады."
               : "Ничего скачивать из App Store или Google Play не нужно. Sirah устанавливается прямо с сайта на главный экран телефона."}
@@ -160,15 +160,15 @@ export default function InstallPage() {
 
           <div className="mb-6">
 
-            <p className="text-xs uppercase tracking-[0.2em] text-zinc-500 mb-2">
+            <p className="mb-2 text-xs uppercase tracking-[0.2em] text-zinc-500">
               {isKz ? "Қадам бойынша" : "Шаг за шагом"}
             </p>
 
             <h2 className="text-2xl font-semibold">
-              🍎 iPhone
+              iPhone
             </h2>
 
-            <p className="text-zinc-500 mt-2">
+            <p className="mt-2 text-zinc-500">
               {isKz
                 ? "Safari арқылы орнату"
                 : "Установка через Safari"}
@@ -187,13 +187,13 @@ export default function InstallPage() {
                   {isKz ? "1-қадам" : "Шаг 1"}
                 </span>
 
-                <h3 className="text-lg font-medium mt-1">
+                <h3 className="mt-1 text-lg font-medium">
                   {isKz
                     ? "Sirah-ны Safari-де аш"
                     : "Открой Sirah в Safari"}
                 </h3>
 
-                <p className="text-sm text-zinc-600 dark:text-zinc-400 mt-2 leading-relaxed">
+                <p className="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
                   {isKz
                     ? "Sirah сайтын дәл Safari браузерінде аш."
                     : "Открой сайт Sirah именно в браузере Safari."}
@@ -201,7 +201,7 @@ export default function InstallPage() {
 
               </div>
 
-              <div className="overflow-hidden rounded-2xl border border-zinc-300 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-950">
+              <div className="overflow-hidden rounded-2xl border border-zinc-300 bg-zinc-100 dark:border-zinc-900 dark:bg-zinc-950">
 
                 <Image
                   src="/install/iphone-4.jpeg"
@@ -212,7 +212,7 @@ export default function InstallPage() {
                   }
                   width={800}
                   height={1200}
-                  className="w-full h-auto"
+                  className="h-auto w-full"
                 />
 
               </div>
@@ -228,13 +228,13 @@ export default function InstallPage() {
                   {isKz ? "2-қадам" : "Шаг 2"}
                 </span>
 
-                <h3 className="text-lg font-medium mt-1">
+                <h3 className="mt-1 text-lg font-medium">
                   {isKz
                     ? "«Бөлісу» батырмасын бас"
                     : "Нажми «Поделиться»"}
                 </h3>
 
-                <p className="text-sm text-zinc-600 dark:text-zinc-400 mt-2 leading-relaxed">
+                <p className="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
                   {isKz
                     ? "Safari браузерінің төменгі жағындағы «Бөлісу» белгішесін бас."
                     : "В нижней части Safari нажми кнопку со значком «Поделиться»."}
@@ -242,7 +242,7 @@ export default function InstallPage() {
 
               </div>
 
-              <div className="overflow-hidden rounded-2xl border border-zinc-300 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-950">
+              <div className="overflow-hidden rounded-2xl border border-zinc-300 bg-zinc-100 dark:border-zinc-900 dark:bg-zinc-950">
 
                 <Image
                   src="/install/iphone-1.jpeg"
@@ -253,7 +253,7 @@ export default function InstallPage() {
                   }
                   width={800}
                   height={1200}
-                  className="w-full h-auto"
+                  className="h-auto w-full"
                 />
 
               </div>
@@ -269,13 +269,13 @@ export default function InstallPage() {
                   {isKz ? "3-қадам" : "Шаг 3"}
                 </span>
 
-                <h3 className="text-lg font-medium mt-1">
+                <h3 className="mt-1 text-lg font-medium">
                   {isKz
                     ? "«Негізгі экранға» таңда"
                     : 'Выбери «На экран "Домой"»'}
                 </h3>
 
-                <p className="text-sm text-zinc-600 dark:text-zinc-400 mt-2 leading-relaxed">
+                <p className="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
                   {isKz
                     ? "Ашылған мәзірден сайтты негізгі экранға қосу пунктін тап."
                     : "В открывшемся меню найди пункт добавления сайта на главный экран."}
@@ -283,7 +283,7 @@ export default function InstallPage() {
 
               </div>
 
-              <div className="overflow-hidden rounded-2xl border border-zinc-300 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-950">
+              <div className="overflow-hidden rounded-2xl border border-zinc-300 bg-zinc-100 dark:border-zinc-900 dark:bg-zinc-950">
 
                 <Image
                   src="/install/iphone-2.jpeg"
@@ -294,7 +294,7 @@ export default function InstallPage() {
                   }
                   width={800}
                   height={1200}
-                  className="w-full h-auto"
+                  className="h-auto w-full"
                 />
 
               </div>
@@ -310,13 +310,13 @@ export default function InstallPage() {
                   {isKz ? "4-қадам" : "Шаг 4"}
                 </span>
 
-                <h3 className="text-lg font-medium mt-1">
+                <h3 className="mt-1 text-lg font-medium">
                   {isKz
                     ? "«Қосу» батырмасын бас"
                     : "Нажми «Добавить»"}
                 </h3>
 
-                <p className="text-sm text-zinc-600 dark:text-zinc-400 mt-2 leading-relaxed">
+                <p className="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
                   {isKz
                     ? "Егер «Веб-қолданба ретінде ашу» деген пункт шықса, оны қос. Содан кейін «Қосу» батырмасын бас. Суретте соңғы нәтиже көрсетілген."
                     : "Если появится пункт «Открывать как веб-приложение», включи его. Затем нажми «Добавить». На фото конечный итог."}
@@ -324,7 +324,7 @@ export default function InstallPage() {
 
               </div>
 
-              <div className="overflow-hidden rounded-2xl border border-zinc-300 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-950">
+              <div className="overflow-hidden rounded-2xl border border-zinc-300 bg-zinc-100 dark:border-zinc-900 dark:bg-zinc-950">
 
                 <Image
                   src="/install/iphone-3.jpeg"
@@ -335,7 +335,7 @@ export default function InstallPage() {
                   }
                   width={800}
                   height={1200}
-                  className="w-full h-auto"
+                  className="h-auto w-full"
                 />
 
               </div>
@@ -349,7 +349,7 @@ export default function InstallPage() {
 
             <div className="mb-6">
 
-              <p className="text-xs uppercase tracking-[0.2em] text-zinc-500 mb-2">
+              <p className="mb-2 text-xs uppercase tracking-[0.2em] text-zinc-500">
                 {isKz ? "Дайын" : "Готово"}
               </p>
 
@@ -359,7 +359,7 @@ export default function InstallPage() {
                   : "Как будет выглядеть Sirah"}
               </h2>
 
-              <p className="text-zinc-500 mt-2">
+              <p className="mt-2 text-zinc-500">
                 {isKz
                   ? "Орнатқаннан кейін Sirah белгішесі негізгі экранда пайда болады."
                   : "После установки иконка Sirah появится на главном экране."}
@@ -367,7 +367,7 @@ export default function InstallPage() {
 
             </div>
 
-            <div className="overflow-hidden rounded-2xl border border-zinc-300 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-950">
+            <div className="overflow-hidden rounded-2xl border border-zinc-300 bg-zinc-100 dark:border-zinc-900 dark:bg-zinc-950">
 
               <Image
                 src="/install/iphone-3.jpeg"
@@ -378,16 +378,16 @@ export default function InstallPage() {
                 }
                 width={800}
                 height={1200}
-                className="w-full h-auto"
+                className="h-auto w-full"
               />
 
             </div>
 
           </section>
 
-          <div className="mt-8 rounded-2xl border border-zinc-300 dark:border-zinc-800 p-5">
+          <div className="mt-8 rounded-2xl border border-zinc-300 p-5 dark:border-zinc-900">
 
-            <p className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
+            <p className="text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
               {isKz
                 ? "Осыдан кейін Sirah белгішесі негізгі экранда пайда болады. Оны бассаң, Sirah қолданба сияқты ашылады."
                 : "После этого иконка Sirah появится на главном экране. Нажми на неё — и Sirah откроется как приложение."}
@@ -402,15 +402,15 @@ export default function InstallPage() {
 
           <div className="mb-6">
 
-            <p className="text-xs uppercase tracking-[0.2em] text-zinc-500 mb-2">
+            <p className="mb-2 text-xs uppercase tracking-[0.2em] text-zinc-500">
               {isKz ? "Қадам бойынша" : "Шаг за шагом"}
             </p>
 
             <h2 className="text-2xl font-semibold">
-              🤖 Android
+              Android
             </h2>
 
-            <p className="text-zinc-500 mt-2">
+            <p className="mt-2 text-zinc-500">
               {isKz
                 ? "Google Chrome арқылы орнату"
                 : "Установка через Google Chrome"}
@@ -429,13 +429,13 @@ export default function InstallPage() {
                   {isKz ? "1-қадам" : "Шаг 1"}
                 </span>
 
-                <h3 className="text-lg font-medium mt-1">
+                <h3 className="mt-1 text-lg font-medium">
                   {isKz
                     ? "Sirah-ны Chrome-да аш"
                     : "Открой Sirah в Chrome"}
                 </h3>
 
-                <p className="text-sm text-zinc-600 dark:text-zinc-400 mt-2 leading-relaxed">
+                <p className="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
                   {isKz
                     ? "Sirah сайтын Google Chrome браузерінде аш."
                     : "Открой сайт Sirah в браузере Google Chrome."}
@@ -443,7 +443,7 @@ export default function InstallPage() {
 
               </div>
 
-              <div className="overflow-hidden rounded-2xl border border-zinc-300 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-950">
+              <div className="overflow-hidden rounded-2xl border border-zinc-300 bg-zinc-100 dark:border-zinc-900 dark:bg-zinc-950">
 
                 <Image
                   src="/install/android-1.jpeg"
@@ -454,7 +454,7 @@ export default function InstallPage() {
                   }
                   width={800}
                   height={1200}
-                  className="w-full h-auto"
+                  className="h-auto w-full"
                 />
 
               </div>
@@ -470,13 +470,13 @@ export default function InstallPage() {
                   {isKz ? "2-қадам" : "Шаг 2"}
                 </span>
 
-                <h3 className="text-lg font-medium mt-1">
+                <h3 className="mt-1 text-lg font-medium">
                   {isKz
                     ? "Мәзірді аш"
                     : "Открой меню"}
                 </h3>
 
-                <p className="text-sm text-zinc-600 dark:text-zinc-400 mt-2 leading-relaxed">
+                <p className="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
 
                   {isKz ? (
                     <>
@@ -496,7 +496,7 @@ export default function InstallPage() {
 
               </div>
 
-              <div className="overflow-hidden rounded-2xl border border-zinc-300 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-950">
+              <div className="overflow-hidden rounded-2xl border border-zinc-300 bg-zinc-100 dark:border-zinc-900 dark:bg-zinc-950">
 
                 <Image
                   src="/install/android-2.jpeg"
@@ -507,7 +507,7 @@ export default function InstallPage() {
                   }
                   width={800}
                   height={1200}
-                  className="w-full h-auto"
+                  className="h-auto w-full"
                 />
 
               </div>
@@ -523,13 +523,13 @@ export default function InstallPage() {
                   {isKz ? "3-қадам" : "Шаг 3"}
                 </span>
 
-                <h3 className="text-lg font-medium mt-1">
+                <h3 className="mt-1 text-lg font-medium">
                   {isKz
                     ? "«Орнату» батырмасын бас"
                     : "Нажми «Установить»"}
                 </h3>
 
-                <p className="text-sm text-zinc-600 dark:text-zinc-400 mt-2 leading-relaxed">
+                <p className="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
                   {isKz
                     ? "Chrome нұсқасына байланысты бұл пункт «Қолданбаны орнату» деп аталуы немесе «Орнату және таңбаша жасау» бөлімінің ішінде болуы мүмкін."
                     : "В зависимости от версии Chrome пункт может называться «Установить приложение» или находиться внутри «Установить и создать ярлык»."}
@@ -537,7 +537,7 @@ export default function InstallPage() {
 
               </div>
 
-              <div className="overflow-hidden rounded-2xl border border-zinc-300 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-950">
+              <div className="overflow-hidden rounded-2xl border border-zinc-300 bg-zinc-100 dark:border-zinc-900 dark:bg-zinc-950">
 
                 <Image
                   src="/install/android-3.jpeg"
@@ -548,7 +548,7 @@ export default function InstallPage() {
                   }
                   width={800}
                   height={1200}
-                  className="w-full h-auto"
+                  className="h-auto w-full"
                 />
 
               </div>
@@ -564,13 +564,13 @@ export default function InstallPage() {
                   {isKz ? "4-қадам" : "Шаг 4"}
                 </span>
 
-                <h3 className="text-lg font-medium mt-1">
+                <h3 className="mt-1 text-lg font-medium">
                   {isKz
                     ? "Орнатуды раста"
                     : "Подтверди установку"}
                 </h3>
 
-                <p className="text-sm text-zinc-600 dark:text-zinc-400 mt-2 leading-relaxed">
+                <p className="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
                   {isKz
                     ? "Орнатуды раста. Осыдан кейін Sirah қолданбалар арасында және негізгі экранда пайда болады."
                     : "Подтверди установку. После этого Sirah появится среди приложений и на главном экране."}
@@ -578,7 +578,7 @@ export default function InstallPage() {
 
               </div>
 
-              <div className="overflow-hidden rounded-2xl border border-zinc-300 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-950">
+              <div className="overflow-hidden rounded-2xl border border-zinc-300 bg-zinc-100 dark:border-zinc-900 dark:bg-zinc-950">
 
                 <Image
                   src="/install/android-4.jpeg"
@@ -589,7 +589,7 @@ export default function InstallPage() {
                   }
                   width={800}
                   height={1200}
-                  className="w-full h-auto"
+                  className="h-auto w-full"
                 />
 
               </div>
@@ -603,7 +603,7 @@ export default function InstallPage() {
 
             <div className="mb-6">
 
-              <p className="text-xs uppercase tracking-[0.2em] text-zinc-500 mb-2">
+              <p className="mb-2 text-xs uppercase tracking-[0.2em] text-zinc-500">
                 {isKz ? "Дайын" : "Готово"}
               </p>
 
@@ -613,7 +613,7 @@ export default function InstallPage() {
                   : "Как будет выглядеть Sirah"}
               </h2>
 
-              <p className="text-zinc-500 mt-2">
+              <p className="mt-2 text-zinc-500">
                 {isKz
                   ? "Орнатқаннан кейін Sirah белгішесі негізгі экранда пайда болады."
                   : "После установки иконка Sirah появится на главном экране."}
@@ -621,7 +621,7 @@ export default function InstallPage() {
 
             </div>
 
-            <div className="overflow-hidden rounded-2xl border border-zinc-300 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-950">
+            <div className="overflow-hidden rounded-2xl border border-zinc-300 bg-zinc-100 dark:border-zinc-900 dark:bg-zinc-950">
 
               <Image
                 src="/install/android-5.jpeg"
@@ -632,14 +632,14 @@ export default function InstallPage() {
                 }
                 width={800}
                 height={1200}
-                className="w-full h-auto"
+                className="h-auto w-full"
               />
 
             </div>
 
-            <div className="mt-5 rounded-2xl border border-zinc-300 dark:border-zinc-800 p-5">
+            <div className="mt-5 rounded-2xl border border-zinc-300 p-5 dark:border-zinc-900">
 
-              <p className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
+              <p className="text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
                 {isKz
                   ? "Sirah белгішесін бассаң, Sirah кәдімгі Chrome интерфейсінсіз жеке қолданба ретінде ашылады."
                   : "Нажимаешь на иконку Sirah — и Sirah открывается как отдельное приложение, без обычного интерфейса Chrome."}
@@ -656,14 +656,14 @@ export default function InstallPage() {
 
           <Link
             href="/stories"
-            className="flex w-full items-center justify-center rounded-full bg-foreground px-6 py-3.5 text-background font-medium hover:opacity-80 transition-opacity"
+            className="flex w-full items-center justify-center rounded-full bg-foreground px-6 py-3.5 font-medium text-background transition-opacity hover:opacity-80"
           >
             {isKz
               ? "Хикаяларға өту →"
               : "Перейти к историям →"}
           </Link>
 
-          <p className="text-center text-xs text-zinc-500 mt-8">
+          <p className="mt-8 text-center text-xs text-zinc-500">
             Sirah
           </p>
 
