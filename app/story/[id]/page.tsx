@@ -131,6 +131,8 @@ export default function StoryPage({
   const nextStoryUrl = nextStories[id] ?? null;
 
   useEffect(() => {
+    if (!languageReady) return;
+
     const container = scrollContainerRef.current;
 
     if (!container) return;
@@ -178,9 +180,8 @@ export default function StoryPage({
         window.cancelAnimationFrame(rafId);
       }
     };
-  }, [id, language]);
+  }, [id, language, languageReady]);
 
-  // Пока язык из localStorage не получен, рендерим пустой фон без текста
   if (!languageReady) {
     return <main className="min-h-[100dvh] w-full bg-black" />;
   }
