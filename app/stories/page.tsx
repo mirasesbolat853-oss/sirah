@@ -942,8 +942,8 @@ export default function StoriesList() {
                                 rounded-2xl
 
                                 border
-                                border-zinc-900
-                                dark:border-zinc-800
+                                border-zinc-300
+                                dark:border-zinc-900
 
                                 bg-white
                                 dark:bg-zinc-950
@@ -954,8 +954,8 @@ export default function StoriesList() {
                                 transition-all
                                 duration-300
 
-                                hover:border-zinc-500
-                                dark:hover:border-zinc-600
+                                hover:border-zinc-400
+                                dark:hover:border-zinc-800
 
                                 hover:bg-zinc-50
                                 dark:hover:bg-zinc-900
