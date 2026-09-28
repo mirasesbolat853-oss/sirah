@@ -381,7 +381,7 @@ available: true,
 },
 {
 number: "04",
-title: "Мұхаммадтың ﷺ дүниеге келуі",
+title: "Мұхаммедтің ﷺ дүниеге келуі",
 description: "Тарихтың жаңа тарауы басталған түн",
 href: "/story/birth",
 available: true,
