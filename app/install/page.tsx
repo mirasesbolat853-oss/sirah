@@ -52,7 +52,7 @@ export default function InstallPage() {
           <h1 className="text-4xl md:text-5xl font-semibold tracking-tight mb-5">
             {isKz ? (
               <>
-                Sirah-ты
+                Sirah-ны
                 <br />
                 телефонға қосу
               </>
@@ -67,7 +67,7 @@ export default function InstallPage() {
 
           <p className="text-zinc-400 leading-relaxed">
             {isKz
-              ? "Sirah-ты телефонның негізгі экранына қосып, оны браузерден сайт іздемей-ақ кәдімгі қолданба сияқты ашуға болады."
+              ? "Sirah-ны телефонның негізгі экранына қосып, оны браузерден сайт іздемей-ақ кәдімгі қолданба сияқты ашуға болады."
               : "Sirah можно добавить на главный экран телефона и открывать как обычное приложение — без поиска сайта в браузере."}
           </p>
         </section>
@@ -118,7 +118,7 @@ export default function InstallPage() {
 
                 <h3 className="text-lg font-medium mt-1">
                   {isKz
-                    ? "Sirah-ты Safari-де аш"
+                    ? "Sirah-ны Safari-де аш"
                     : "Открой Sirah в Safari"}
                 </h3>
 
@@ -322,7 +322,7 @@ export default function InstallPage() {
 
                 <h3 className="text-lg font-medium mt-1">
                   {isKz
-                    ? "Sirah-ты Chrome-да аш"
+                    ? "Sirah-ны Chrome-да аш"
                     : "Открой Sirah в Chrome"}
                 </h3>
 

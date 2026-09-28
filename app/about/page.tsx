@@ -1,21 +1,41 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import Link from "next/link";
 
+type Language = "ru" | "kz";
+
 export default function AboutPage() {
+  const [language, setLanguage] = useState<Language>("ru");
+  const [languageReady, setLanguageReady] = useState(false);
+
+  useEffect(() => {
+    const savedLanguage = localStorage.getItem("language");
+
+    if (savedLanguage === "kz") {
+      setLanguage("kz");
+    } else {
+      setLanguage("ru");
+    }
+    setLanguageReady(true);
+  }, []);
+
+  if (!languageReady) {
+    return <main className="min-h-[100dvh] w-full bg-black" />;
+  }
+
   return (
     <main className="min-h-[100dvh] bg-black text-white">
       <div className="mx-auto w-full max-w-2xl px-6 py-8">
-
         <div className="flex items-center justify-between mb-10">
           <Link
             href="/stories"
             className="text-sm text-zinc-400 hover:text-white transition-colors"
           >
-            ← К историям
+            {language === "kz" ? "← Хикаяларға" : "← К историям"}
           </Link>
 
-          <span className="text-sm text-zinc-500">
-            Sirah
-          </span>
+          <span className="text-sm text-zinc-500">Sirah</span>
         </div>
 
         <section className="mb-12">
@@ -24,30 +44,31 @@ export default function AboutPage() {
           </p>
 
           <h1 className="text-4xl md:text-5xl font-semibold tracking-tight mb-5">
-            О приложении
+            {language === "kz" ? "Қолданба туралы" : "О приложении"}
           </h1>
 
           <p className="text-zinc-400 leading-relaxed">
-            Sirah — это простой способ знакомиться с жизнеописанием
-            Пророка Мухаммада ﷺ небольшими историями.
+            {language === "kz"
+              ? "Sirah — Мұхаммед пайғамбардың ﷺ өмірбаянымен (сирасымен) қысқаша хикаялар арқылы танысудың қарапайым жолы."
+              : "Sirah — это простой способ знакомиться с жизнеописанием Пророка Мухаммада ﷺ небольшими историями."}
           </p>
         </section>
 
         <section className="mb-12">
           <h2 className="text-xl font-semibold mb-4">
-            Зачем создан Sirah?
+            {language === "kz" ? "Sirah не үшін жасалды?" : "Зачем создан Sirah?"}
           </h2>
 
           <p className="text-zinc-400 leading-relaxed mb-4">
-            Мы хотели сделать изучение сиры простым и доступным.
-            Вместо длинных текстов история разделена на небольшие
-            части, которые можно читать одну за другой.
+            {language === "kz"
+              ? "Біз сираны үйренуді қарапайым әрі қолжетімді еткіміз келді. Ұзақ мәтіндердің орнына оқиға бірінен соң бірі оқуға ыңғайлы шағын бөлімдерге бөлінген."
+              : "Мы хотели сделать изучение сиры простым и доступным. Вместо длинных текстов история разделена на небольшие части, которые можно читать одну за другой."}
           </p>
 
           <p className="text-zinc-400 leading-relaxed">
-            Цель приложения — помочь человеку начать знакомство
-            с жизнью Пророка ﷺ даже тогда, когда у него мало времени
-            на чтение.
+            {language === "kz"
+              ? "Қолданбаның мақсаты — оқуға уақыт аз болған күннің өзінде адамға Пайғамбардың ﷺ өмірімен танысуды бастауға көмектесу."
+              : "Цель приложения — помочь человеку начать знакомство с жизнью Пророка ﷺ даже тогда, когда у него мало времени на чтение."}
           </p>
         </section>
 
@@ -58,40 +79,53 @@ export default function AboutPage() {
             </div>
 
             <h2 className="text-xl font-semibold">
-              Проверка материалов
+              {language === "kz" ? "Материалдарды тексеру" : "Проверка материалов"}
             </h2>
           </div>
 
           <p className="text-zinc-400 leading-relaxed">
-            Материалы текущих историй были представлены{" "}
-            <span className="text-white font-medium">
-              Омирбекову Ернару, наиб-имаму области Жетісу
-            </span>{" "}
-            и получили его одобрение.
+            {language === "kz" ? (
+              <>
+                Қазіргі хикаялардың материалдары{" "}
+                <span className="text-white font-medium">
+                  Жетісу облысының наиб-имамы Өмірбеков Ернарға
+                </span>{" "}
+                ұсынылып, оның мақұлдауын алды.
+              </>
+            ) : (
+              <>
+                Материалы текущих историй были представлены{" "}
+                <span className="text-white font-medium">
+                  Омирбекову Ернару, наиб-имаму области Жетісу
+                </span>{" "}
+                и получили его одобрение.
+              </>
+            )}
           </p>
         </section>
 
         <section className="mb-12">
           <h2 className="text-xl font-semibold mb-4">
-            О достоверности
+            {language === "kz" ? "Сенімділік туралы" : "О достоверности"}
           </h2>
 
           <p className="text-zinc-400 leading-relaxed">
-            Мы стремимся излагать историю жизни Пророка ﷺ кратко
-            и понятно, опираясь на достоверные источники и не добавляя
-            вымышленных диалогов или неподтверждённых деталей.
+            {language === "kz"
+              ? "Біз ойдан шығарылған диалогтар мен расталмаған детальдарды қоспай, сенімді дереккөздерге сүйене отырып, Пайғамбардың ﷺ өмірбаянын қысқа әрі түсінікті баяндауға тырысамыз."
+              : "Мы стремимся излагать историю жизни Пророка ﷺ кратко и понятно, опираясь на достоверные источники и не добавляя вымышленных диалогов или неподтверждённых деталей."}
           </p>
         </section>
 
         {/* Связаться с автором */}
         <section className="mb-12 rounded-2xl border border-zinc-800 bg-zinc-950 p-6">
           <h2 className="text-xl font-semibold mb-3">
-            Связаться с автором
+            {language === "kz" ? "Автормен байланысу" : "Связаться с автором"}
           </h2>
 
           <p className="text-zinc-400 leading-relaxed mb-5">
-            Если вы заметили ошибку, знаете более точный источник или
-            хотите предложить что-то для Sirah — напишите мне.
+            {language === "kz"
+              ? "Егер қате байқасаңыз, дәлірек дереккөзді білсеңіз немесе Sirah жобасына ұсынысыңыз болса — маған жазыңыз."
+              : "Если вы заметили ошибку, знаете более точный источник или хотите предложить что-то для Sirah — напишите мне."}
           </p>
 
           <a
@@ -100,7 +134,7 @@ export default function AboutPage() {
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-medium text-black hover:bg-zinc-200 transition-colors"
           >
-            Написать в Telegram →
+            {language === "kz" ? "Telegram-ға жазу →" : "Написать в Telegram →"}
           </a>
         </section>
 
@@ -108,13 +142,10 @@ export default function AboutPage() {
           href="/stories"
           className="flex w-full items-center justify-center rounded-full bg-white px-6 py-3.5 text-black font-medium hover:bg-zinc-200 transition-colors"
         >
-          Перейти к историям →
+          {language === "kz" ? "Хикаяларға өту →" : "Перейти к историям →"}
         </Link>
 
-        <p className="text-center text-xs text-zinc-700 mt-8">
-          Sirah
-        </p>
-
+        <p className="text-center text-xs text-zinc-700 mt-8">Sirah</p>
       </div>
     </main>
   );
