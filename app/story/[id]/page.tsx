@@ -15,7 +15,6 @@ import { aminaStory as aminaKZ } from "@/data/stories/kz/beforebirth/amina";
 import { birthStory as birthRu } from "@/data/stories/ru/beforebirth/birth";
 import { birthStory as birthKz } from "@/data/stories/kz/beforebirth/birth";
 
-
 import { halimaStory } from "@/data/stories/childhood/halima";
 import { halimaBlessingStory } from "@/data/stories/childhood/halima-blessing";
 import { halimaScaryDayStory } from "@/data/stories/childhood/halima-scary-day";
@@ -34,6 +33,7 @@ type Slide = {
 };
 
 type Language = "ru" | "kz";
+type Theme = "light" | "dark";
 
 export default function StoryPage({
   params,
@@ -44,11 +44,15 @@ export default function StoryPage({
 
   const [language, setLanguage] = useState<Language>("ru");
   const [languageReady, setLanguageReady] = useState(false);
+
+  const [theme, setTheme] = useState<Theme | null>(null);
+
   const [activeIndex, setActiveIndex] = useState(0);
 
   const scrollContainerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
+    // Язык
     const savedLanguage = localStorage.getItem("language");
 
     if (savedLanguage === "kz") {
@@ -56,7 +60,33 @@ export default function StoryPage({
     } else {
       setLanguage("ru");
     }
+
     setLanguageReady(true);
+
+    // Тема
+    const savedTheme = localStorage.getItem("theme");
+
+    if (savedTheme === "light" || savedTheme === "dark") {
+      setTheme(savedTheme);
+
+      document.documentElement.classList.toggle(
+        "dark",
+        savedTheme === "dark"
+      );
+    } else {
+      const prefersDark = window.matchMedia(
+        "(prefers-color-scheme: dark)"
+      ).matches;
+
+      const initialTheme: Theme = prefersDark ? "dark" : "light";
+
+      setTheme(initialTheme);
+
+      document.documentElement.classList.toggle(
+        "dark",
+        initialTheme === "dark"
+      );
+    }
   }, []);
 
   const stories: Record<string, Slide[]> = {
@@ -132,6 +162,21 @@ export default function StoryPage({
 
   const nextStoryUrl = nextStories[id] ?? null;
 
+  const isDark = theme === "dark";
+
+  const toggleTheme = () => {
+    const newTheme: Theme =
+      theme === "dark" ? "light" : "dark";
+
+    localStorage.setItem("theme", newTheme);
+    setTheme(newTheme);
+
+    document.documentElement.classList.toggle(
+      "dark",
+      newTheme === "dark"
+    );
+  };
+
   useEffect(() => {
     if (!languageReady) return;
 
@@ -159,7 +204,9 @@ export default function StoryPage({
 
         if (!clientHeight) return;
 
-        const newIndex = Math.round(scrollTop / clientHeight);
+        const newIndex = Math.round(
+          scrollTop / clientHeight
+        );
 
         setActiveIndex((prevIndex) => {
           if (prevIndex !== newIndex) {
@@ -184,20 +231,23 @@ export default function StoryPage({
     };
   }, [id, language, languageReady]);
 
-  if (!languageReady) {
-    return <main className="min-h-[100dvh] w-full bg-black" />;
+  if (!languageReady || !theme) {
+    return (
+      <main className="min-h-[100dvh] w-full bg-background" />
+    );
   }
 
   if (!stories[id]) {
     return (
-      <main className="min-h-[100dvh] w-full bg-black text-white flex flex-col items-center justify-center p-6 text-center">
+      <main className="min-h-[100dvh] w-full bg-background text-foreground flex flex-col items-center justify-center p-6 text-center transition-colors duration-300">
+
         <h1 className="text-2xl font-semibold mb-4">
           {language === "kz"
             ? "Хикая табылмады"
             : "История не найдена"}
         </h1>
 
-        <p className="text-zinc-500 mb-8">
+        <p className="text-zinc-600 dark:text-zinc-500 mb-8">
           {language === "kz"
             ? "Мүмкін, бұл хикая әлі қосылмаған."
             : "Возможно, эта история ещё не добавлена."}
@@ -205,53 +255,78 @@ export default function StoryPage({
 
         <Link
           href="/stories"
-          className="px-6 py-3 rounded-full bg-white text-black font-medium"
+          className="px-6 py-3 rounded-full bg-foreground text-background font-medium hover:opacity-80 transition-opacity"
         >
           {language === "kz"
             ? "← Хикаялар тізіміне"
             : "← К списку историй"}
         </Link>
+
       </main>
     );
   }
 
   return (
-    <main className="relative h-[100dvh] w-full overflow-hidden bg-black text-white">
-      <header className="fixed top-0 left-0 w-full z-50 p-4 bg-gradient-to-b from-black/80 to-transparent pointer-events-none">
+    <main className="relative h-[100dvh] w-full overflow-hidden bg-background text-foreground transition-colors duration-300">
+
+      {/* Верхняя панель */}
+      <header className="fixed top-0 left-0 w-full z-50 p-4 bg-gradient-to-b from-background/90 to-transparent pointer-events-none">
+
         <div className="pointer-events-auto flex items-center justify-between">
+
           <Link
             href="/stories"
-            className="inline-block text-sm font-medium text-white hover:opacity-70 transition-opacity"
+            className="inline-block text-sm font-medium text-foreground hover:opacity-60 transition-opacity"
           >
             {language === "kz"
               ? "← Хикаялар тізімі"
               : "← К списку историй"}
           </Link>
 
-          <span className="text-xs text-zinc-500">
-            {title}
-          </span>
+          <div className="flex items-center gap-5">
+
+            <span className="text-xs text-zinc-500">
+              {title}
+            </span>
+
+            {/* Переключатель темы */}
+            <button
+              onClick={toggleTheme}
+              aria-label="Сменить тему"
+              className="text-base leading-none transition-opacity hover:opacity-60"
+            >
+              {isDark ? "☀" : "☾"}
+            </button>
+
+          </div>
+
         </div>
+
       </header>
 
       <div
         ref={scrollContainerRef}
         className="stories-container h-[100dvh] w-full overflow-y-scroll snap-y snap-mandatory touch-pan-y [&::-webkit-scrollbar]:hidden"
       >
+
+        {/* Подсказка свайпа */}
         {activeIndex === 0 && slides.length > 1 && (
           <div className="swipe-hint pointer-events-none fixed bottom-7 left-1/2 z-40 -translate-x-1/2 flex flex-col items-center">
-            <span className="text-xs text-zinc-400 mb-1">
+
+            <span className="text-xs text-zinc-500 dark:text-zinc-400 mb-1">
               {language === "kz"
                 ? "Төмен сырғытыңыз"
                 : "Свайп вниз"}
             </span>
 
-            <span className="text-3xl text-white">
+            <span className="text-3xl text-foreground">
               ↓
             </span>
+
           </div>
         )}
 
+        {/* Истории */}
         {slides.map((slide, idx) => {
           const isActive = activeIndex === idx;
 
@@ -261,6 +336,7 @@ export default function StoryPage({
               data-index={idx}
               className="story-slide h-[100dvh] w-full snap-start snap-always flex flex-col justify-center items-center p-6 relative"
             >
+
               <h2
                 className={`story-text text-2xl md:text-4xl text-center font-semibold leading-relaxed max-w-2xl ${
                   isActive
@@ -270,15 +346,19 @@ export default function StoryPage({
               >
                 {slide.text}
               </h2>
+
             </div>
           );
         })}
 
+        {/* Конец истории */}
         <div
           data-index={slides.length}
           className="story-slide h-[100dvh] w-full snap-start snap-always flex flex-col justify-center items-center p-6 relative"
         >
+
           <div className="flex flex-col items-center max-w-xl text-center animate-fadeIn">
+
             <span className="text-4xl mb-4">
               📖
             </span>
@@ -289,17 +369,18 @@ export default function StoryPage({
                 : "Конец истории"}
             </h2>
 
-            <p className="text-zinc-400 text-sm md:text-base mb-8">
+            <p className="text-zinc-600 dark:text-zinc-400 text-sm md:text-base mb-8">
               {language === "kz"
                 ? `«${title}» хикаясын соңына дейін оқыдыңыз.`
                 : `Вы дочитали «${title}» до конца.`}
             </p>
 
             <div className="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto">
+
               {nextStoryUrl && (
                 <Link
                   href={nextStoryUrl}
-                  className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3.5 text-base font-medium bg-white text-black rounded-full hover:bg-zinc-200 transition-all shadow-lg"
+                  className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3.5 text-base font-medium bg-foreground text-background rounded-full hover:opacity-80 transition-all shadow-lg"
                 >
                   {language === "kz"
                     ? "Келесі хикая →"
@@ -309,15 +390,19 @@ export default function StoryPage({
 
               <Link
                 href="/stories"
-                className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3.5 text-base font-medium bg-zinc-900 text-white border border-zinc-700 rounded-full hover:bg-zinc-800 transition-all"
+                className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3.5 text-base font-medium bg-zinc-200 dark:bg-zinc-900 text-foreground border border-zinc-300 dark:border-zinc-700 rounded-full hover:bg-zinc-300 dark:hover:bg-zinc-800 transition-all"
               >
                 {language === "kz"
                   ? "Хикаялар тізімі"
                   : "К списку историй"}
               </Link>
+
             </div>
+
           </div>
+
         </div>
+
       </div>
 
       <style jsx>{`
@@ -380,6 +465,7 @@ export default function StoryPage({
           animation: fadeIn 0.5s ease-out forwards;
         }
       `}</style>
+
     </main>
   );
 }
