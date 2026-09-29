@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Sirah",
+  title: "Sira",
   description: "История жизни Пророка Мухаммада ﷺ",
 };
 
