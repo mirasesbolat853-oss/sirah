@@ -7,6 +7,11 @@ import { Analytics } from "@vercel/analytics/react";
 export const metadata: Metadata = {
   title: "Sira",
   description: "История жизни Пророка Мухаммада ﷺ",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "Sira",
+  },
 };
 
 export const viewport: Viewport = {
@@ -24,7 +29,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ru" className="h-full antialiased">
-      <body className="min-h-full">
+      <body className="min-h-full bg-background text-foreground">
         {children}
         <ServiceWorkerRegistration />
         <Analytics />
