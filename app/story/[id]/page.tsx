@@ -1,3 +1,4 @@
+
 "use client";
 
 import { use, useEffect, useRef, useState } from "react";
@@ -109,27 +110,77 @@ export default function StoryPage({
     alamin: alAminStory,
   };
 
+  // Названия историй для верхней панели
   const storyTitles: Record<string, string> = {
     elephant:
       language === "kz"
         ? "Піл жылы"
         : "Год Слона",
 
-    abdullah: "Отец Пророка ﷺ",
-    amina: "Амина — мать Пророка ﷺ",
-    birth: "Рождение Мухаммада ﷺ",
+    abdullah:
+      language === "kz"
+        ? "Пайғамбардың әкесі ﷺ"
+        : "Отец Пророка ﷺ",
 
-    halima: "Халима ас-Са‘дийя",
-    "halima-blessing": "Благословение в доме Халимы",
-    "halima-scary-day": "День, который испугал Халиму",
-    returnmother: "Возвращение к матери",
-    "last-years-with-amina": "Последние годы с Аминой",
-    aminadeath: "Смерть Амины",
-    undergrandfather: "Под опекой деда",
-    "under-abu-talib": "Под опекой Абу Талиба",
+    amina:
+      language === "kz"
+        ? "Әмина — Пайғамбардың анасы ﷺ"
+        : "Амина — мать Пророка ﷺ",
 
-    tradejourneys: "Торговые путешествия",
-    alamin: "Аль-Амин",
+    birth:
+      language === "kz"
+        ? "Мұхаммедтің ﷺ дүниеге келуі"
+        : "Рождение Мухаммада ﷺ",
+
+    halima:
+      language === "kz"
+        ? "Халима әс-Сағдия"
+        : "Халима ас-Са‘дийя",
+
+    "halima-blessing":
+      language === "kz"
+        ? "Халима үйіндегі береке"
+        : "Благословение в доме Халимы",
+
+    "halima-scary-day":
+      language === "kz"
+        ? "Халиманы қорқытқан күн"
+        : "День, который испугал Халиму",
+
+    returnmother:
+      language === "kz"
+        ? "Анасына оралу"
+        : "Возвращение к матери",
+
+    "last-years-with-amina":
+      language === "kz"
+        ? "Әминамен өткізген соңғы жылдар"
+        : "Последние годы с Аминой",
+
+    aminadeath:
+      language === "kz"
+        ? "Әминаның қайтыс болуы"
+        : "Смерть Амины",
+
+    undergrandfather:
+      language === "kz"
+        ? "Атасының қамқорлығында"
+        : "Под опекой деда",
+
+    "under-abu-talib":
+      language === "kz"
+        ? "Әбу Тәліптің қамқорлығында"
+        : "Под опекой Абу Талиба",
+
+    tradejourneys:
+      language === "kz"
+        ? "Сауда сапарлары"
+        : "Торговые путешествия",
+
+    alamin:
+      language === "kz"
+        ? "Әл-Әмин"
+        : "Аль-Амин",
   };
 
   const nextStories: Record<string, string | null> = {
@@ -156,9 +207,7 @@ export default function StoryPage({
 
   const title =
     storyTitles[id] ??
-    (language === "kz"
-      ? "Хикая"
-      : "История");
+    (language === "kz" ? "Хикая" : "История");
 
   const nextStoryUrl = nextStories[id] ?? null;
 
@@ -240,7 +289,6 @@ export default function StoryPage({
   if (!stories[id]) {
     return (
       <main className="min-h-[100dvh] w-full bg-background text-foreground flex flex-col items-center justify-center p-6 text-center transition-colors duration-300">
-
         <h1 className="text-2xl font-semibold mb-4">
           {language === "kz"
             ? "Хикая табылмады"
@@ -261,19 +309,15 @@ export default function StoryPage({
             ? "← Хикаялар тізіміне"
             : "← К списку историй"}
         </Link>
-
       </main>
     );
   }
 
   return (
     <main className="relative h-[100dvh] w-full overflow-hidden bg-background text-foreground transition-colors duration-300">
-
       {/* Верхняя панель */}
       <header className="fixed top-0 left-0 w-full z-50 p-4 bg-gradient-to-b from-background/90 to-transparent pointer-events-none">
-
         <div className="pointer-events-auto flex items-center justify-between">
-
           <Link
             href="/stories"
             className="inline-block text-sm font-medium text-foreground hover:opacity-60 transition-opacity"
@@ -284,7 +328,6 @@ export default function StoryPage({
           </Link>
 
           <div className="flex items-center gap-5">
-
             <span className="text-xs text-zinc-500">
               {title}
             </span>
@@ -297,22 +340,17 @@ export default function StoryPage({
             >
               {isDark ? "☀" : "☾"}
             </button>
-
           </div>
-
         </div>
-
       </header>
 
       <div
         ref={scrollContainerRef}
         className="stories-container h-[100dvh] w-full overflow-y-scroll snap-y snap-mandatory touch-pan-y [&::-webkit-scrollbar]:hidden"
       >
-
         {/* Подсказка свайпа */}
         {activeIndex === 0 && slides.length > 1 && (
           <div className="swipe-hint pointer-events-none fixed bottom-7 left-1/2 z-40 -translate-x-1/2 flex flex-col items-center">
-
             <span className="text-xs text-zinc-500 dark:text-zinc-400 mb-1">
               {language === "kz"
                 ? "Төмен сырғытыңыз"
@@ -322,7 +360,6 @@ export default function StoryPage({
             <span className="text-3xl text-foreground">
               ↓
             </span>
-
           </div>
         )}
 
@@ -336,7 +373,6 @@ export default function StoryPage({
               data-index={idx}
               className="story-slide h-[100dvh] w-full snap-start snap-always flex flex-col justify-center items-center p-6 relative"
             >
-
               <h2
                 className={`story-text text-2xl md:text-4xl text-center font-semibold leading-relaxed max-w-2xl ${
                   isActive
@@ -346,7 +382,6 @@ export default function StoryPage({
               >
                 {slide.text}
               </h2>
-
             </div>
           );
         })}
@@ -356,9 +391,7 @@ export default function StoryPage({
           data-index={slides.length}
           className="story-slide h-[100dvh] w-full snap-start snap-always flex flex-col justify-center items-center p-6 relative"
         >
-
           <div className="flex flex-col items-center max-w-xl text-center animate-fadeIn">
-
             <span className="text-4xl mb-4">
               📖
             </span>
@@ -376,7 +409,6 @@ export default function StoryPage({
             </p>
 
             <div className="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto">
-
               {nextStoryUrl && (
                 <Link
                   href={nextStoryUrl}
@@ -396,13 +428,9 @@ export default function StoryPage({
                   ? "Хикаялар тізімі"
                   : "К списку историй"}
               </Link>
-
             </div>
-
           </div>
-
         </div>
-
       </div>
 
       <style jsx>{`
@@ -465,7 +493,6 @@ export default function StoryPage({
           animation: fadeIn 0.5s ease-out forwards;
         }
       `}</style>
-
     </main>
   );
 }
