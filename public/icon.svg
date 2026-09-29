@@ -6,13 +6,10 @@
     y="512"
     text-anchor="middle"
     dominant-baseline="central"
-    fill="none"
-    stroke="#C8B98A"
-    stroke-width="5"
-    paint-order="stroke"
+    fill="#71717a"
     font-family="Arial, Helvetica, sans-serif"
     font-size="190"
-    font-weight="500"
+    font-weight="600"
     letter-spacing="50"
   >SIRA</text>
 </svg>
