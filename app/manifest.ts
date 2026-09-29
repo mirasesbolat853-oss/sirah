@@ -5,11 +5,15 @@ export default function manifest(): MetadataRoute.Manifest {
     name: "Sira",
     short_name: "Sira",
     description: "История жизни Пророка Мухаммада ﷺ",
+
     start_url: "/",
     display: "standalone",
-    background_color: "#ffffff",
-    theme_color: "#ffffff",
+
+    background_color: "#f5f5f3",
+    theme_color: "#f5f5f3",
+
     orientation: "portrait",
+
     icons: [
       {
         src: "/icon-192.png",
