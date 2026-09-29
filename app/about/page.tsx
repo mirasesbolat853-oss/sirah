@@ -109,7 +109,7 @@ export default function AboutPage() {
         <section className="mb-12">
 
           <p className="text-xs uppercase tracking-[0.25em] text-zinc-500 mb-4">
-            SIRAH
+            SIRA
           </p>
 
           <h1 className="text-4xl md:text-5xl font-semibold tracking-tight mb-5">

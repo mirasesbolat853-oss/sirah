@@ -105,7 +105,7 @@ export default function InstallPage() {
         <section className="mb-12">
 
           <p className="mb-4 text-xs uppercase tracking-[0.25em] text-zinc-500">
-            SIRAH
+            SIRA
           </p>
 
           <h1 className="mb-5 text-4xl font-semibold tracking-tight md:text-5xl">

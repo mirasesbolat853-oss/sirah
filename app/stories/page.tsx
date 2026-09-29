@@ -858,7 +858,7 @@ export default function StoriesList() {
         <div className="mt-12 mb-14">
 
           <p className="text-xs uppercase tracking-[0.25em] text-zinc-500 mb-4">
-            SIRAH
+            SIRA
           </p>
 
           <h1 className="text-4xl md:text-5xl font-semibold tracking-tight">
