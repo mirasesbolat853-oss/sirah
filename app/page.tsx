@@ -12,6 +12,7 @@ export default function Home() {
 
   const [language, setLanguage] = useState<Language | null>(null);
   const [theme, setTheme] = useState<Theme | null>(null);
+  const [isReady, setIsReady] = useState(false);
 
   useEffect(() => {
     // Язык
@@ -21,6 +22,7 @@ export default function Home() {
       setLanguage(savedLanguage);
     } else {
       router.replace("/language");
+      return;
     }
 
     // Тема
@@ -47,10 +49,12 @@ export default function Home() {
         initialTheme === "dark"
       );
     }
+
+    setIsReady(true);
   }, [router]);
 
-  if (!language || !theme) {
-    return <main className="min-h-screen bg-background" />;
+  if (!isReady || !language) {
+    return <main className="min-h-dvh bg-background" />;
   }
 
   const content = {
@@ -105,10 +109,10 @@ export default function Home() {
   const isDark = theme === "dark";
 
   return (
-    <main className="relative min-h-screen bg-background text-foreground flex items-center justify-center px-6 transition-colors duration-300">
+    <main className="relative min-h-dvh bg-background text-foreground flex items-center justify-center px-6 pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)] transition-colors duration-300">
 
       {/* Переключатели */}
-      <div className="absolute right-5 top-5 flex items-center gap-3 text-xs tracking-widest">
+      <div className="absolute right-5 top-[calc(1.25rem+env(safe-area-inset-top))] flex items-center gap-3 text-xs tracking-widest">
 
         {/* Язык */}
         <button
