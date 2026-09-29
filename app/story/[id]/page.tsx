@@ -1,8 +1,8 @@
-
 "use client";
 
 import { use, useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import { track } from "@vercel/analytics";
 
 import { elephantStory as elephantRu } from "@/data/stories/ru/beforebirth/elephant";
 import { elephantStory as elephantKz } from "@/data/stories/kz/beforebirth/elephant";
@@ -51,6 +51,12 @@ export default function StoryPage({
   const [activeIndex, setActiveIndex] = useState(0);
 
   const scrollContainerRef = useRef<HTMLDivElement | null>(null);
+
+  // Чтобы смена языка не считалась новым открытием истории
+  const trackedStoryRef = useRef<string | null>(null);
+
+  // Чтобы событие дочитывания отправилось только один раз
+  const completedStoryRef = useRef<string | null>(null);
 
   useEffect(() => {
     // Язык
@@ -212,6 +218,53 @@ export default function StoryPage({
   const nextStoryUrl = nextStories[id] ?? null;
 
   const isDark = theme === "dark";
+
+  /*
+   * Аналитика: открытие истории
+   *
+   * Срабатывает один раз при открытии конкретной истории.
+   * Смена языка не создаёт повторное событие.
+   */
+  useEffect(() => {
+    if (!languageReady || !stories[id]) return;
+
+    if (trackedStoryRef.current === id) return;
+
+    trackedStoryRef.current = id;
+
+    track("story_view", {
+      story: id,
+      language,
+    });
+  }, [id, language, languageReady, stories]);
+
+  /*
+   * Аналитика: дочитывание истории
+   *
+   * Конечный экран имеет индекс slides.length.
+   * Событие отправляется один раз для каждой истории.
+   */
+  useEffect(() => {
+    if (!languageReady || !stories[id]) return;
+
+    if (activeIndex < slides.length) return;
+
+    if (completedStoryRef.current === id) return;
+
+    completedStoryRef.current = id;
+
+    track("story_complete", {
+      story: id,
+      language,
+    });
+  }, [
+    activeIndex,
+    id,
+    language,
+    languageReady,
+    slides.length,
+    stories,
+  ]);
 
   const toggleTheme = () => {
     const newTheme: Theme =
