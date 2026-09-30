@@ -434,7 +434,7 @@ const content: Record<Language, Section[]> = {
         {
           number: "06",
           title: "Анасының қайтыс болуы",
-          description: "Мұхаммед ﷺ Әминасынан айырылған кезде",
+          description: "Мұхаммед ﷺ Әминадан айырылған кезде",
           href: "/story/aminadeath",
           available: true,
         },
