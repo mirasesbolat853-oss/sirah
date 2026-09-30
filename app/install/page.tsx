@@ -149,7 +149,7 @@ export default function InstallPage() {
 
           <p className="leading-relaxed text-zinc-600 dark:text-zinc-400">
             {isKz
-              ? "App Store немесе Google Play-ден ештеңе жүктеудің қажеті жоқ. Сира-ты сайттың өзінен тікелей телефонның негізгі экранына қосуға болады."
+              ? "App Store немесе Google Play-ден ештеңе жүктеудің қажеті жоқ. Сира-ны сайттың өзінен тікелей телефонның негізгі экранына қосуға болады."
               : "Ничего скачивать из App Store или Google Play не нужно. Сира устанавливается прямо с сайта на главный экран телефона."}
           </p>
 
@@ -330,7 +330,7 @@ export default function InstallPage() {
                   src="/install/iphone-3.jpeg"
                   alt={
                     isKz
-                      ? "Сира-ты iPhone негізгі экранына қосу"
+                      ? "Сира-ны iPhone негізгі экранына қосу"
                       : "Добавление Сира на главный экран iPhone"
                   }
                   width={800}
