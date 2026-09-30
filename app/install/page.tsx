@@ -86,7 +86,7 @@ export default function InstallPage() {
           <div className="flex items-center gap-5">
 
             <span className="text-sm text-zinc-500">
-              Sira
+              Сира
             </span>
 
             {/* Тема */}
@@ -105,19 +105,19 @@ export default function InstallPage() {
         <section className="mb-12">
 
           <p className="mb-4 text-xs uppercase tracking-[0.25em] text-zinc-500">
-            SIRA
+            Сира
           </p>
 
           <h1 className="mb-5 text-4xl font-semibold tracking-tight md:text-5xl">
             {isKz ? (
               <>
-                Sira-ны
+                Сира-ны
                 <br />
                 телефонға қосу
               </>
             ) : (
               <>
-                Добавить Sira
+                Добавить Сира
                 <br />
                 на телефон
               </>
@@ -126,8 +126,8 @@ export default function InstallPage() {
 
           <p className="leading-relaxed text-zinc-600 dark:text-zinc-400">
             {isKz
-              ? "Sira-ны телефонның негізгі экранына қосып, оны браузерден сайт іздемей-ақ кәдімгі қолданба сияқты ашуға болады."
-              : "Sira можно добавить на главный экран телефона и открывать как обычное приложение — без поиска сайта в браузере."}
+              ? "Сира-ны телефонның негізгі экранына қосып, оны браузерден сайт іздемей-ақ кәдімгі қолданба сияқты ашуға болады."
+              : "Сира можно добавить на главный экран телефона и открывать как обычное приложение — без поиска сайта в браузере."}
           </p>
 
         </section>
@@ -149,8 +149,8 @@ export default function InstallPage() {
 
           <p className="leading-relaxed text-zinc-600 dark:text-zinc-400">
             {isKz
-              ? "App Store немесе Google Play-ден ештеңе жүктеудің қажеті жоқ. Sira-ты сайттың өзінен тікелей телефонның негізгі экранына қосуға болады."
-              : "Ничего скачивать из App Store или Google Play не нужно. Sira устанавливается прямо с сайта на главный экран телефона."}
+              ? "App Store немесе Google Play-ден ештеңе жүктеудің қажеті жоқ. Сира-ты сайттың өзінен тікелей телефонның негізгі экранына қосуға болады."
+              : "Ничего скачивать из App Store или Google Play не нужно. Сира устанавливается прямо с сайта на главный экран телефона."}
           </p>
 
         </section>
@@ -189,14 +189,14 @@ export default function InstallPage() {
 
                 <h3 className="mt-1 text-lg font-medium">
                   {isKz
-                    ? "Sira-ны Safari-де аш"
-                    : "Открой Sira в Safari"}
+                    ? "Сира-ны Safari-де аш"
+                    : "Открой Сира в Safari"}
                 </h3>
 
                 <p className="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
                   {isKz
-                    ? "Sira сайтын дәл Safari браузерінде аш."
-                    : "Открой сайт Sira именно в браузере Safari."}
+                    ? "Сира сайтын дәл Safari браузерінде аш."
+                    : "Открой сайт Сира именно в браузере Safari."}
                 </p>
 
               </div>
@@ -207,8 +207,8 @@ export default function InstallPage() {
                   src="/install/iphone-4.jpeg"
                   alt={
                     isKz
-                      ? "iPhone телефонында Safari-де ашылған Sira"
-                      : "Sira открыт в Safari на iPhone"
+                      ? "iPhone телефонында Safari-де ашылған Сира"
+                      : "Сира открыт в Safari на iPhone"
                   }
                   width={800}
                   height={1200}
@@ -289,8 +289,8 @@ export default function InstallPage() {
                   src="/install/iphone-2.jpeg"
                   alt={
                     isKz
-                      ? "Sira-ны iPhone негізгі экранына қосу"
-                      : "Добавить Sira на экран Домой"
+                      ? "Сира-ны iPhone негізгі экранына қосу"
+                      : "Добавить Сира на экран Домой"
                   }
                   width={800}
                   height={1200}
@@ -330,8 +330,8 @@ export default function InstallPage() {
                   src="/install/iphone-3.jpeg"
                   alt={
                     isKz
-                      ? "Sira-ты iPhone негізгі экранына қосу"
-                      : "Добавление Sira на главный экран iPhone"
+                      ? "Сира-ты iPhone негізгі экранына қосу"
+                      : "Добавление Сира на главный экран iPhone"
                   }
                   width={800}
                   height={1200}
@@ -355,14 +355,14 @@ export default function InstallPage() {
 
               <h2 className="text-2xl font-semibold">
                 {isKz
-                  ? "Sira қалай көрінеді"
-                  : "Как будет выглядеть Sira"}
+                  ? "Сира қалай көрінеді"
+                  : "Как будет выглядеть Сира"}
               </h2>
 
               <p className="mt-2 text-zinc-500">
                 {isKz
-                  ? "Орнатқаннан кейін Sira белгішесі негізгі экранда пайда болады."
-                  : "После установки иконка Sira появится на главном экране."}
+                  ? "Орнатқаннан кейін Сира белгішесі негізгі экранда пайда болады."
+                  : "После установки иконка Сира появится на главном экране."}
               </p>
 
             </div>
@@ -373,8 +373,8 @@ export default function InstallPage() {
                 src="/install/iphone-3.jpeg"
                 alt={
                   isKz
-                    ? "iPhone негізгі экранындағы Sira"
-                    : "Sira на главном экране iPhone"
+                    ? "iPhone негізгі экранындағы Сира"
+                    : "Сира на главном экране iPhone"
                 }
                 width={800}
                 height={1200}
@@ -389,8 +389,8 @@ export default function InstallPage() {
 
             <p className="text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
               {isKz
-                ? "Осыдан кейін Sira белгішесі негізгі экранда пайда болады. Оны бассаң, Sira қолданба сияқты ашылады."
-                : "После этого иконка Sira появится на главном экране. Нажми на неё — и Sira откроется как приложение."}
+                ? "Осыдан кейін Сира белгішесі негізгі экранда пайда болады. Оны бассаң, Сира қолданба сияқты ашылады."
+                : "После этого иконка Сира появится на главном экране. Нажми на неё — и Сира откроется как приложение."}
             </p>
 
           </div>
@@ -431,14 +431,14 @@ export default function InstallPage() {
 
                 <h3 className="mt-1 text-lg font-medium">
                   {isKz
-                    ? "Sira-ны Chrome-да аш"
-                    : "Открой Sira в Chrome"}
+                    ? "Сира-ны Chrome-да аш"
+                    : "Открой Сира в Chrome"}
                 </h3>
 
                 <p className="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
                   {isKz
-                    ? "Sira сайтын Google Chrome браузерінде аш."
-                    : "Открой сайт Sira в браузере Google Chrome."}
+                    ? "Сира сайтын Google Chrome браузерінде аш."
+                    : "Открой сайт Сира в браузере Google Chrome."}
                 </p>
 
               </div>
@@ -449,8 +449,8 @@ export default function InstallPage() {
                   src="/install/android-1.jpeg"
                   alt={
                     isKz
-                      ? "Android телефонында Google Chrome-да ашылған Sira"
-                      : "Sira открыт в Google Chrome на Android"
+                      ? "Android телефонында Google Chrome-да ашылған Сира"
+                      : "Сира открыт в Google Chrome на Android"
                   }
                   width={800}
                   height={1200}
@@ -543,8 +543,8 @@ export default function InstallPage() {
                   src="/install/android-3.jpeg"
                   alt={
                     isKz
-                      ? "Sira-ны Android-қа орнату"
-                      : "Установка Sira на Android"
+                      ? "Сира-ны Android-қа орнату"
+                      : "Установка Сира на Android"
                   }
                   width={800}
                   height={1200}
@@ -572,8 +572,8 @@ export default function InstallPage() {
 
                 <p className="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
                   {isKz
-                    ? "Орнатуды раста. Осыдан кейін Sira қолданбалар арасында және негізгі экранда пайда болады."
-                    : "Подтверди установку. После этого Sira появится среди приложений и на главном экране."}
+                    ? "Орнатуды раста. Осыдан кейін Сира қолданбалар арасында және негізгі экранда пайда болады."
+                    : "Подтверди установку. После этого Сира появится среди приложений и на главном экране."}
                 </p>
 
               </div>
@@ -584,8 +584,8 @@ export default function InstallPage() {
                   src="/install/android-4.jpeg"
                   alt={
                     isKz
-                      ? "Android-қа орнатылған Sira"
-                      : "Sira установлен на Android"
+                      ? "Android-қа орнатылған Сира"
+                      : "Сира установлен на Android"
                   }
                   width={800}
                   height={1200}
@@ -609,14 +609,14 @@ export default function InstallPage() {
 
               <h2 className="text-2xl font-semibold">
                 {isKz
-                  ? "Sira қалай көрінеді"
-                  : "Как будет выглядеть Sira"}
+                  ? "Сира қалай көрінеді"
+                  : "Как будет выглядеть Сира"}
               </h2>
 
               <p className="mt-2 text-zinc-500">
                 {isKz
-                  ? "Орнатқаннан кейін Sira белгішесі негізгі экранда пайда болады."
-                  : "После установки иконка Sira появится на главном экране."}
+                  ? "Орнатқаннан кейін Сира белгішесі негізгі экранда пайда болады."
+                  : "После установки иконка Сира появится на главном экране."}
               </p>
 
             </div>
@@ -627,8 +627,8 @@ export default function InstallPage() {
                 src="/install/android-5.jpeg"
                 alt={
                   isKz
-                    ? "Android негізгі экранындағы Sira"
-                    : "Sira на главном экране Android"
+                    ? "Android негізгі экранындағы Сира"
+                    : "Сира на главном экране Android"
                 }
                 width={800}
                 height={1200}
@@ -641,8 +641,8 @@ export default function InstallPage() {
 
               <p className="text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
                 {isKz
-                  ? "Sira белгішесін бассаң, Sira кәдімгі Chrome интерфейсінсіз жеке қолданба ретінде ашылады."
-                  : "Нажимаешь на иконку Sira — и Sira открывается как отдельное приложение, без обычного интерфейса Chrome."}
+                  ? "Сира белгішесін бассаң, Сира кәдімгі Chrome интерфейсінсіз жеке қолданба ретінде ашылады."
+                  : "Нажимаешь на иконку Сира — и Сира открывается как отдельное приложение, без обычного интерфейса Chrome."}
               </p>
 
             </div>
@@ -664,7 +664,7 @@ export default function InstallPage() {
           </Link>
 
           <p className="mt-8 text-center text-xs text-zinc-500">
-            Sira
+            Сира
           </p>
 
         </section>

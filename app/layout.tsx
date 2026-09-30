@@ -5,7 +5,7 @@ import ServiceWorkerRegistration from "./ServiceWorkerRegistration";
 import { Analytics } from "@vercel/analytics/react";
 
 export const metadata: Metadata = {
-  title: "Sira",
+  title: "Сира",
   description: "История жизни Пророка Мухаммада ﷺ",
 };
 

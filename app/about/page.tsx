@@ -90,7 +90,7 @@ export default function AboutPage() {
           <div className="flex items-center gap-5">
 
             <span className="text-sm text-zinc-500">
-              Sira
+              Сира
             </span>
 
             {/* Тема */}
@@ -109,7 +109,7 @@ export default function AboutPage() {
         <section className="mb-12">
 
           <p className="text-xs uppercase tracking-[0.25em] text-zinc-500 mb-4">
-            SIRA
+            Сира
           </p>
 
           <h1 className="text-4xl md:text-5xl font-semibold tracking-tight mb-5">
@@ -120,8 +120,8 @@ export default function AboutPage() {
 
           <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed">
             {language === "kz"
-              ? "Sira — Мұхаммед пайғамбардың ﷺ өмірбаянымен (сирасымен) қысқаша хикаялар арқылы танысудың қарапайым жолы."
-              : "Sira — это простой способ знакомиться с жизнеописанием Пророка Мухаммада ﷺ небольшими историями."}
+              ? "Сира — Мұхаммед пайғамбардың ﷺ өмірбаянымен (сирасымен) қысқаша хикаялар арқылы танысудың қарапайым жолы."
+              : "Сира — это простой способ знакомиться с жизнеописанием Пророка Мухаммада ﷺ небольшими историями."}
           </p>
 
         </section>
@@ -131,8 +131,8 @@ export default function AboutPage() {
 
           <h2 className="text-xl font-semibold mb-4">
             {language === "kz"
-              ? "Sira не үшін жасалды?"
-              : "Зачем создан Sira?"}
+              ? "Сира не үшін жасалды?"
+              : "Зачем создан Сира?"}
           </h2>
 
           <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed mb-4">
@@ -218,8 +218,8 @@ export default function AboutPage() {
 
           <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed mb-5">
             {language === "kz"
-              ? "Егер қате байқасаңыз, дәлірек дереккөзді білсеңіз немесе Sira жобасына ұсынысыңыз болса — маған жазыңыз."
-              : "Если вы заметили ошибку, знаете более точный источник или хотите предложить что-то для Sira — напишите мне."}
+              ? "Егер қате байқасаңыз, дәлірек дереккөзді білсеңіз немесе Сира жобасына ұсынысыңыз болса — маған жазыңыз."
+              : "Если вы заметили ошибку, знаете более точный источник или хотите предложить что-то для Сира — напишите мне."}
           </p>
 
           <a
@@ -246,7 +246,7 @@ export default function AboutPage() {
         </Link>
 
         <p className="text-center text-xs text-zinc-500 mt-8">
-          Sira
+          Сира
         </p>
 
       </div>

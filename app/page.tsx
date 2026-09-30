@@ -162,7 +162,7 @@ return ( <main className="relative min-h-screen bg-background text-foreground fl
   <div className="w-full max-w-md">
 
     <p className="text-center tracking-[0.4em] text-zinc-500 text-sm">
-      SIRA
+      Сира
     </p>
 
     <h1 className="mt-6 text-center text-5xl font-bold">

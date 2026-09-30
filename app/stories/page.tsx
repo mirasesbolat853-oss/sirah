@@ -698,7 +698,7 @@ const ui = {
     heading: "Истории",
     intro:
       "Путь Посланника Аллаха Мухаммада ﷺ — от событий до его рождения до последних дней его жизни.",
-    install: "📱 Добавить Sira на телефон →",
+    install: "📱 Добавить Сира на телефон →",
     soon: "Скоро",
     footer1: "Истории добавляются постепенно",
     footer2: "Пусть изучение сиры будет полезным знанием.",
@@ -710,7 +710,7 @@ const ui = {
     heading: "Хикаялар",
     intro:
       "Алла Елшісі Мұхаммед ﷺ өмірінің дүниеге келуіне дейінгі оқиғалардан бастап соңғы күндеріне дейінгі жолы.",
-    install: "📱 Sira-ны телефонға қосу →",
+    install: "📱 Сира-ны телефонға қосу →",
     soon: "Жақында",
     footer1: "Хикаялар біртіндеп қосылады",
     footer2: "Сираны оқу пайдалы білім болсын.",
@@ -858,7 +858,7 @@ export default function StoriesList() {
         <div className="mt-12 mb-14">
 
           <p className="text-xs uppercase tracking-[0.25em] text-zinc-500 mb-4">
-            SIRA
+            Сира
           </p>
 
           <h1 className="text-4xl md:text-5xl font-semibold tracking-tight">

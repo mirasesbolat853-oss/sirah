@@ -1,4 +1,4 @@
-const CACHE_NAME = "sirah-v1";
+const CACHE_NAME = "Сираh-v1";
 
 self.addEventListener("install", (event) => {
   self.skipWaiting();

@@ -2,8 +2,8 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Sira",
-    short_name: "Sira",
+    name: "Сира",
+    short_name: "Сира",
     description: "История жизни Пророка Мухаммада ﷺ",
 
     start_url: "/",
