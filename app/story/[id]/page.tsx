@@ -243,11 +243,7 @@ export default function StoryPage({ params }: StoryPageProps) {
     const difference =
       touchStartY.current - touchEndY.current;
 
-    if (Math.abs(difference) < 50) {
-      touchStartY.current = null;
-      touchEndY.current = null;
-      return;
-    }
+    if (Math.abs(difference) < 50) return;
 
     if (difference > 0) {
       goNext();
@@ -352,4 +348,3 @@ export default function StoryPage({ params }: StoryPageProps) {
     </main>
   );
 }
-
