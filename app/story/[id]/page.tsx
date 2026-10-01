@@ -17,82 +17,6 @@ import { aminaStory as aminaKz } from "@/data/stories/kz/beforebirth/amina";
 import { birthStory as birthRu } from "@/data/stories/ru/beforebirth/birth";
 import { birthStory as birthKz } from "@/data/stories/kz/beforebirth/birth";
 
-<<<<<<< HEAD
-import { halimaStory as halimaRu } from "@/data/stories/ru/childhood/halima";
-import { halimaStory as halimaKz } from "@/data/stories/kz/childhood/halima";
-
-import {
-  halimaBlessingStory as halimaBlessingRu,
-} from "@/data/stories/ru/childhood/halima-blessing";
-
-import {
-  halimaBlessingStory as halimaBlessingKz,
-} from "@/data/stories/kz/childhood/halima-blessing";
-
-import {
-  halimaScaryDayStory as halimaScaryDayRu,
-} from "@/data/stories/ru/childhood/halima-scary-day";
-
-import {
-  halimaScaryDayStory as halimaScaryDayKz,
-} from "@/data/stories/kz/childhood/halima-scary-day";
-
-import {
-  returnToMotherStory as returnToMotherRu,
-} from "@/data/stories/ru/childhood/returnmother";
-
-import {
-  returnToMotherStory as returnToMotherKz,
-} from "@/data/stories/kz/childhood/returnmother";
-
-import {
-  lastYearsWithAminaStory as lastYearsWithAminaRu,
-} from "@/data/stories/ru/childhood/last-years-with-amina";
-
-import {
-  lastYearsWithAminaStory as lastYearsWithAminaKz,
-} from "@/data/stories/kz/childhood/lastyearwithamina";
-
-import {
-  aminaDeathStory as aminaDeathRu,
-} from "@/data/stories/ru/childhood/aminadeath";
-
-import {
-  aminaDeathStory as aminaDeathKz,
-} from "@/data/stories/kz/childhood/aminadeath";
-
-import {
-  underGrandfatherStory as underGrandfatherRu,
-} from "@/data/stories/ru/childhood/undergrandfather";
-
-import {
-  underGrandfatherStory as underGrandfatherKz,
-} from "@/data/stories/kz/childhood/undergrandfather";
-
-import {
-  underAbuTalibStory as underAbuTalibRu,
-} from "@/data/stories/ru/childhood/under-abu-talib";
-
-import {
-  underAbuTalibStory as underAbuTalibKz,
-} from "@/data/stories/kz/childhood/under-abu-talib";
-
-import {
-  tradeJourneysStory as tradeJourneysRu,
-} from "@/data/stories/ru/beforemessage/tradejourneys";
-
-import {
-  tradeJourneysStory as tradeJourneysKz,
-} from "@/data/stories/kz/beforemessage/tradejourney";
-
-import {
-  alAminStory as alAminRu,
-} from "@/data/stories/ru/beforemessage/alamin";
-
-import {
-  alAminStory as alAminKz,
-} from "@/data/stories/kz/beforemessage/alamin";
-=======
 // --- CHILDHOOD ---
 import { halimaStory as halimaRu } from "@/data/stories/ru/childhood/halima";
 import { halimaStory as halimaKz } from "@/data/stories/kz/childhood/halima";
@@ -106,7 +30,7 @@ import { halimaScaryDayStory as halimaScaryDayKz } from "@/data/stories/kz/child
 import { returnToMotherStory as returnMotherRu } from "@/data/stories/ru/childhood/returnmother";
 import { returnToMotherStory as returnMotherKz } from "@/data/stories/kz/childhood/returnmother";
 
-import { lastYearsWithAminaStory as lastYearsWithAminaRu } from "@/data/stories/ru/childhood/lastyearwithamina";
+import { lastYearsWithAminaStory as lastYearsWithAminaRu } from "@/data/stories/ru/childhood/last-years-with-amina";
 import { lastYearsWithAminaStory as lastYearsWithAminaKz } from "@/data/stories/kz/childhood/lastyearwithamina";
 
 import { aminaDeathStory as aminaDeathRu } from "@/data/stories/ru/childhood/aminadeath";
@@ -119,102 +43,87 @@ import { underAbuTalibStory as underAbuTalibRu } from "@/data/stories/ru/childho
 import { underAbuTalibStory as underAbuTalibKz } from "@/data/stories/kz/childhood/under-abu-talib";
 
 // --- BEFORE MESSAGE ---
-import { tradeJourneysStory as tradeJourneysRu } from "@/data/stories/ru/beforemessage/tradejourney";
+import { tradeJourneysStory as tradeJourneysRu } from "@/data/stories/ru/beforemessage/tradejourneys";
 import { tradeJourneysStory as tradeJourneysKz } from "@/data/stories/kz/beforemessage/tradejourney";
 
 import { alAminStory as alAminRu } from "@/data/stories/ru/beforemessage/alamin";
 import { alAminStory as alAminKz } from "@/data/stories/kz/beforemessage/alamin";
->>>>>>> 84e92f7 (update)
 
 type Slide = {
   id: number;
   text: string;
 };
 
-type StoryPageProps = {
-  params: Promise<{
-    id: string;
-  }>;
-};
+type Language = "ru" | "kz";
+type Theme = "light" | "dark";
 
-export default function StoryPage({ params }: StoryPageProps) {
+export default function StoryPage({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
   const { id } = use(params);
 
-  const [language, setLanguage] = useState<"ru" | "kz">("ru");
-  const [currentSlide, setCurrentSlide] = useState(0);
+  const [language, setLanguage] = useState<Language>("ru");
+  const [languageReady, setLanguageReady] = useState(false);
 
-  const touchStartY = useRef<number | null>(null);
-  const touchEndY = useRef<number | null>(null);
+  const [theme, setTheme] = useState<Theme | null>(null);
+
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const scrollContainerRef = useRef<HTMLDivElement | null>(null);
+
+  // Чтобы смена языка не считалась новым открытием истории
+  const trackedStoryRef = useRef<string | null>(null);
+
+  // Чтобы событие дочитывания отправилось только один раз
+  const completedStoryRef = useRef<string | null>(null);
 
   useEffect(() => {
+    // Язык
     const savedLanguage = localStorage.getItem("language");
 
-    if (savedLanguage === "kz" || savedLanguage === "ru") {
-      setLanguage(savedLanguage);
+    if (savedLanguage === "kz") {
+      setLanguage("kz");
+    } else {
+      setLanguage("ru");
+    }
+
+    setLanguageReady(true);
+
+    // Тема
+    const savedTheme = localStorage.getItem("theme");
+
+    if (savedTheme === "light" || savedTheme === "dark") {
+      setTheme(savedTheme);
+
+      document.documentElement.classList.toggle(
+        "dark",
+        savedTheme === "dark"
+      );
+    } else {
+      const prefersDark = window.matchMedia(
+        "(prefers-color-scheme: dark)"
+      ).matches;
+
+      const initialTheme: Theme = prefersDark ? "dark" : "light";
+
+      setTheme(initialTheme);
+
+      document.documentElement.classList.toggle(
+        "dark",
+        initialTheme === "dark"
+      );
     }
   }, []);
 
   const stories: Record<string, Slide[]> = {
-<<<<<<< HEAD
-    // BEFORE BIRTH
-=======
     // Before birth
->>>>>>> 84e92f7 (update)
     elephant: language === "kz" ? elephantKz : elephantRu,
     abdullah: language === "kz" ? abdullahKz : abdullahRu,
     amina: language === "kz" ? aminaKz : aminaRu,
     birth: language === "kz" ? birthKz : birthRu,
 
-<<<<<<< HEAD
-    // CHILDHOOD
-    halima: language === "kz" ? halimaKz : halimaRu,
-
-    "halima-blessing":
-      language === "kz"
-        ? halimaBlessingKz
-        : halimaBlessingRu,
-
-    "halima-scary-day":
-      language === "kz"
-        ? halimaScaryDayKz
-        : halimaScaryDayRu,
-
-    returnmother:
-      language === "kz"
-        ? returnToMotherKz
-        : returnToMotherRu,
-
-    "last-years-with-amina":
-      language === "kz"
-        ? lastYearsWithAminaKz
-        : lastYearsWithAminaRu,
-
-    aminadeath:
-      language === "kz"
-        ? aminaDeathKz
-        : aminaDeathRu,
-
-    undergrandfather:
-      language === "kz"
-        ? underGrandfatherKz
-        : underGrandfatherRu,
-
-    "under-abu-talib":
-      language === "kz"
-        ? underAbuTalibKz
-        : underAbuTalibRu,
-
-    // BEFORE MESSAGE
-    tradejourneys:
-      language === "kz"
-        ? tradeJourneysKz
-        : tradeJourneysRu,
-
-    alamin:
-      language === "kz"
-        ? alAminKz
-        : alAminRu,
-=======
     // Childhood
     halima: language === "kz" ? halimaKz : halimaRu,
     "halima-blessing": language === "kz" ? halimaBlessingKz : halimaBlessingRu,
@@ -248,13 +157,14 @@ export default function StoryPage({ params }: StoryPageProps) {
 
     tradejourneys: language === "kz" ? "Сауда сапарлары" : "Торговые путешествия",
     alamin: language === "kz" ? "Әл-Әмин" : "Аль-Амин",
->>>>>>> 84e92f7 (update)
   };
 
-  const story = stories[id];
+  const nextStories: Record<string, string | null> = {
+    elephant: "/story/abdullah",
+    abdullah: "/story/amina",
+    amina: "/story/birth",
+    birth: "/story/halima",
 
-<<<<<<< HEAD
-=======
     halima: "/story/halima-blessing",
     "halima-blessing": "/story/halima-scary-day",
     "halima-scary-day": "/story/returnmother",
@@ -282,23 +192,19 @@ export default function StoryPage({ params }: StoryPageProps) {
   /*
    * Аналитика: открытие истории
    */
->>>>>>> 84e92f7 (update)
   useEffect(() => {
-    setCurrentSlide(0);
-  }, [id, language]);
+    if (!languageReady || !stories[id]) return;
 
-  useEffect(() => {
-    if (!story) return;
+    if (trackedStoryRef.current === id) return;
+
+    trackedStoryRef.current = id;
 
     track("story_view", {
       story: id,
       language,
     });
-  }, [id, language, story]);
+  }, [id, language, languageReady, stories]);
 
-<<<<<<< HEAD
-  if (!story) {
-=======
   /*
    * Аналитика: дочитывание истории
    */
@@ -392,160 +298,218 @@ export default function StoryPage({ params }: StoryPageProps) {
   }, [id, language, languageReady]);
 
   if (!languageReady || !theme) {
->>>>>>> 84e92f7 (update)
     return (
-      <main className="flex min-h-screen items-center justify-center bg-[#f5f5f3] px-6 text-[#171717]">
-        <div className="text-center">
-          <p className="mb-6 text-sm">
-            {language === "kz"
-              ? "Хикая табылмады."
-              : "История не найдена."}
-          </p>
+      <main className="min-h-[100dvh] w-full bg-background" />
+    );
+  }
 
-          <Link
-            href="/stories"
-            className="text-sm underline underline-offset-4"
-          >
-            {language === "kz"
-              ? "Хикаяларға оралу"
-              : "Вернуться к историям"}
-          </Link>
-        </div>
+  if (!stories[id]) {
+    return (
+      <main className="min-h-[100dvh] w-full bg-background text-foreground flex flex-col items-center justify-center p-6 text-center transition-colors duration-300">
+        <h1 className="text-2xl font-semibold mb-4">
+          {language === "kz"
+            ? "Хикая табылмады"
+            : "История не найдена"}
+        </h1>
+
+        <p className="text-zinc-600 dark:text-zinc-500 mb-8">
+          {language === "kz"
+            ? "Мүмкін, бұл хикая әлі қосылмаған."
+            : "Возможно, эта история ещё не добавлена."}
+        </p>
+
+        <Link
+          href="/stories"
+          className="px-6 py-3 rounded-full bg-foreground text-background font-medium hover:opacity-80 transition-opacity"
+        >
+          {language === "kz"
+            ? "← Хикаялар тізіміне"
+            : "← К списку историй"}
+        </Link>
       </main>
     );
   }
 
-  const goNext = () => {
-    if (currentSlide < story.length - 1) {
-      setCurrentSlide((prev) => prev + 1);
-    }
-  };
-
-  const goPrevious = () => {
-    if (currentSlide > 0) {
-      setCurrentSlide((prev) => prev - 1);
-    }
-  };
-
-  const handleTouchStart = (event: React.TouchEvent) => {
-    touchStartY.current = event.touches[0].clientY;
-  };
-
-  const handleTouchEnd = (event: React.TouchEvent) => {
-    touchEndY.current = event.changedTouches[0].clientY;
-
-    if (
-      touchStartY.current === null ||
-      touchEndY.current === null
-    ) {
-      return;
-    }
-
-    const difference =
-      touchStartY.current - touchEndY.current;
-
-    if (Math.abs(difference) < 50) return;
-
-    if (difference > 0) {
-      goNext();
-    } else {
-      goPrevious();
-    }
-
-    touchStartY.current = null;
-    touchEndY.current = null;
-  };
-
-  const handleWheel = (event: React.WheelEvent) => {
-    if (event.deltaY > 0) {
-      goNext();
-    } else if (event.deltaY < 0) {
-      goPrevious();
-    }
-  };
-
-  const slide = story[currentSlide];
-
   return (
-    <main
-      className="fixed inset-0 overflow-hidden bg-[#f5f5f3] text-[#171717]"
-      onTouchStart={handleTouchStart}
-      onTouchEnd={handleTouchEnd}
-      onWheel={handleWheel}
-    >
-      <div className="absolute left-0 right-0 top-0 z-20 flex items-center justify-between px-5 pt-[max(20px,env(safe-area-inset-top))]">
-        <Link
-          href="/stories"
-          className="text-xs tracking-[0.15em] opacity-60 transition-opacity hover:opacity-100"
-        >
-          {language === "kz" ? "ХИКАЯЛАР" : "ИСТОРИИ"}
-        </Link>
+    <main className="relative h-[100dvh] w-full overflow-hidden bg-background text-foreground transition-colors duration-300">
+      {/* Верхняя панель */}
+      <header className="fixed top-0 left-0 w-full z-50 p-4 bg-gradient-to-b from-background/90 to-transparent pointer-events-none">
+        <div className="pointer-events-auto flex items-center justify-between">
+          <Link
+            href="/stories"
+            className="inline-block text-sm font-medium text-foreground hover:opacity-60 transition-opacity"
+          >
+            {language === "kz"
+              ? "← Хикаялар тізімі"
+              : "← К списку историй"}
+          </Link>
 
-        <button
-          type="button"
-          onClick={() => {
-            const nextLanguage =
-              language === "kz" ? "ru" : "kz";
+          <div className="flex items-center gap-5">
+            <span className="text-xs text-zinc-500">
+              {title}
+            </span>
 
-            setLanguage(nextLanguage);
-            localStorage.setItem(
-              "language",
-              nextLanguage
-            );
-          }}
-          className="text-xs tracking-[0.15em] opacity-60 transition-opacity hover:opacity-100"
-        >
-          {language === "kz" ? "RU" : "KZ"}
-        </button>
-      </div>
+            {/* Переключатель темы */}
+            <button
+              onClick={toggleTheme}
+              aria-label="Сменить тему"
+              className="text-base leading-none transition-opacity hover:opacity-60"
+            >
+              {isDark ? "☀" : "☾"}
+            </button>
+          </div>
+        </div>
+      </header>
 
-      <div className="absolute inset-0 flex items-center justify-center px-7 pb-[env(safe-area-inset-bottom)] pt-[env(safe-area-inset-top)]">
+      <div
+        ref={scrollContainerRef}
+        className="stories-container h-[100dvh] w-full overflow-y-scroll snap-y snap-mandatory touch-pan-y [&::-webkit-scrollbar]:hidden"
+      >
+        {/* Подсказка свайпа */}
+        {activeIndex === 0 && slides.length > 1 && (
+          <div className="swipe-hint pointer-events-none fixed bottom-7 left-1/2 z-40 -translate-x-1/2 flex flex-col items-center">
+            <span className="text-xs text-zinc-500 dark:text-zinc-400 mb-1">
+              {language === "kz"
+                ? "Төмен сырғытыңыз"
+                : "Свайп вниз"}
+            </span>
+
+            <span className="text-3xl text-foreground">
+              ↓
+            </span>
+          </div>
+        )}
+
+        {/* Истории */}
+        {slides.map((slide, idx) => {
+          const isActive = activeIndex === idx;
+
+          return (
+            <div
+              key={slide.id}
+              data-index={idx}
+              className="story-slide h-[100dvh] w-full snap-start snap-always flex flex-col justify-center items-center p-6 relative"
+            >
+              <h2
+                className={`story-text text-2xl md:text-4xl text-center font-semibold leading-relaxed max-w-2xl ${
+                  isActive
+                    ? "story-text-enter"
+                    : "story-text-exit"
+                }`}
+              >
+                {slide.text}
+              </h2>
+            </div>
+          );
+        })}
+
+        {/* Конец истории */}
         <div
-          key={`${id}-${currentSlide}-${language}`}
-          className="w-full max-w-2xl text-center"
+          data-index={slides.length}
+          className="story-slide h-[100dvh] w-full snap-start snap-always flex flex-col justify-center items-center p-6 relative"
         >
-          <p className="whitespace-pre-line text-[clamp(24px,5vw,42px)] font-normal leading-[1.25] tracking-[-0.02em]">
-            {slide.text}
-          </p>
+          <div className="flex flex-col items-center max-w-xl text-center animate-fadeIn">
+            <span className="text-4xl mb-4">
+              📖
+            </span>
+
+            <h2 className="text-2xl md:text-3xl font-semibold mb-3">
+              {language === "kz"
+                ? "Хикаяның соңы"
+                : "Конец истории"}
+            </h2>
+
+            <p className="text-zinc-600 dark:text-zinc-400 text-sm md:text-base mb-8">
+              {language === "kz"
+                ? `«${title}» хикаясын соңына дейін оқыдыңыз.`
+                : `Вы дочитали «${title}» до конца.`}
+            </p>
+
+            <div className="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto">
+              {nextStoryUrl && (
+                <Link
+                  href={nextStoryUrl}
+                  className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3.5 text-base font-medium bg-foreground text-background rounded-full hover:opacity-80 transition-all shadow-lg"
+                >
+                  {language === "kz"
+                    ? "Келесі хикая →"
+                    : "Следующая история →"}
+                </Link>
+              )}
+
+              <Link
+                href="/stories"
+                className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3.5 text-base font-medium bg-zinc-200 dark:bg-zinc-900 text-foreground border border-zinc-300 dark:border-zinc-700 rounded-full hover:bg-zinc-300 dark:hover:bg-zinc-800 transition-all"
+              >
+                {language === "kz"
+                  ? "Хикаялар тізімі"
+                  : "К списку историй"}
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div className="absolute bottom-[max(24px,env(safe-area-inset-bottom))] left-0 right-0 z-20 flex items-center justify-center">
-        <div className="flex items-center gap-1.5">
-          {story.map((_, index) => (
-            <span
-              key={index}
-              className={`h-1 rounded-full transition-all ${
-                index === currentSlide
-                  ? "w-5 bg-[#171717]"
-                  : "w-1 bg-[#171717]/20"
-              }`}
-            />
-          ))}
-        </div>
-      </div>
-
-      <button
-        type="button"
-        aria-label={
-          language === "kz"
-            ? "Алдыңғы хикая"
-            : "Предыдущая история"
+      <style jsx>{`
+        .stories-container {
+          scroll-behavior: smooth;
+          -webkit-overflow-scrolling: touch;
+          overscroll-behavior-y: none;
         }
-        onClick={goPrevious}
-        className="absolute left-0 top-0 z-10 h-full w-1/3 cursor-pointer"
-      />
 
-      <button
-        type="button"
-        aria-label={
-          language === "kz"
-            ? "Келесі хикая"
-            : "Следующая история"
+        .story-slide {
+          transform: translateZ(0);
         }
-        onClick={goNext}
-        className="absolute right-0 top-0 z-10 h-full w-1/3 cursor-pointer"
-      />
+
+        .story-text {
+          transition:
+            transform 0.35s ease-out,
+            opacity 0.35s ease-out;
+        }
+
+        .story-text-enter {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+
+        .story-text-exit {
+          opacity: 0;
+          transform: translateY(-16px) scale(0.98);
+        }
+
+        @keyframes swipeHint {
+          0%,
+          100% {
+            transform: translateY(0);
+            opacity: 0.5;
+          }
+
+          50% {
+            transform: translateY(8px);
+            opacity: 1;
+          }
+        }
+
+        .swipe-hint {
+          animation: swipeHint 1.2s ease-in-out infinite;
+        }
+
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+            transform: translateY(10px);
+          }
+
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        .animate-fadeIn {
+          animation: fadeIn 0.5s ease-out forwards;
+        }
+      `}</style>
     </main>
   );
 }
